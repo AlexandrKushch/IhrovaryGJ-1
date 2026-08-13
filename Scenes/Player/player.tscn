@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://dn5i6hcvvm080"]
+
+[ext_resource type="Script" uid="uid://c83nvdy324ybw" path="res://Scenes/Player/Player.cs" id="1_uvnfx"]
+[ext_resource type="Script" uid="uid://b44y7o4p3hf07" path="res://Scenes/Player/PlayerVisual.cs" id="2_a3d8c"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uvnfx"]
+radius = 0.94140625
+height = 2.866211
+
+[node name="Player" type="CharacterBody3D" unique_id=1090890824]
+script = ExtResource("1_uvnfx")
+
+[node name="Visual" type="Node3D" parent="." unique_id=1469848576 node_paths=PackedStringArray("SteeringWheels")]
+script = ExtResource("2_a3d8c")
+SteeringWheels = [NodePath("CSGCombiner3D/CSGCylinder3D3"), NodePath("CSGCombiner3D/CSGCylinder3D4")]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Visual" unique_id=863172245]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Visual/CSGCombiner3D" unique_id=302928805]
+size = Vector3(2.334961, 1, 1.3496094)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Visual/CSGCombiner3D" unique_id=1238528203]
+transform = Transform3D(0.95489067, -0.2969576, 0, 0.2969576, 0.95489067, 0, 0, 0, 1, 0.38353527, 0.8227645, 0)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Visual/CSGCombiner3D" unique_id=1336054123]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.722, -0.5, 0.708)
+height = 0.25
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Visual/CSGCombiner3D" unique_id=1443021006]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.944, -0.7, 0.708)
+radius = 0.25
+height = 0.25
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Visual/CSGCombiner3D" unique_id=173905429]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.944, -0.7, -0.6819869)
+radius = 0.25
+height = 0.25
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Visual/CSGCombiner3D" unique_id=2020999904]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.722, -0.5, -0.736)
+height = 0.25
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=194706025]
+transform = Transform3D(-4.371139e-08, 0, 1, -1, -4.371139e-08, -4.371139e-08, 4.371139e-08, -1, 1.9106855e-15, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_uvnfx")

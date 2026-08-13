@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="The Mess"
+run/main_scene="uid://4g3q61j17a17"
 config/features=PackedStringArray("4.7", "C#", "GL Compatibility")
 
 [display]
