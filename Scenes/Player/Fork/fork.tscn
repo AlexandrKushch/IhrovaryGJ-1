@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://m8gmbme0cdna"]
+
+[ext_resource type="Script" uid="uid://ctdwkbfytpb33" path="res://Scenes/Player/Fork/Fork.cs" id="1_lljwn"]
+[ext_resource type="Script" uid="uid://b2ecds3xves7h" path="res://Scenes/Player/Fork/AreaController.cs" id="2_1bbma"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xrivr"]
+size = Vector3(1, 2, 0.21875)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_13qdw"]
+size = Vector3(1, 0.22, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b1lj4"]
+size = Vector3(2, 2, 2)
+
+[node name="Fork" type="Node3D" unique_id=332197759]
+script = ExtResource("1_lljwn")
+
+[node name="StaticPart" type="StaticBody3D" parent="." unique_id=1121546155]
+collision_layer = 0
+collision_mask = 0
+
+[node name="Visual" type="Node3D" parent="StaticPart" unique_id=1699616271]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="StaticPart/Visual" unique_id=1669143329]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="StaticPart/Visual/CSGCombiner3D" unique_id=1946480002]
+size = Vector3(1, 2, 0.2)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="StaticPart/Visual/CSGCombiner3D" unique_id=2036704226]
+operation = 2
+size = Vector3(0.7519531, 2, 0.2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticPart" unique_id=77343835]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_xrivr")
+
+[node name="MovablePart" type="AnimatableBody3D" parent="." unique_id=1242227260]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10200393, -0.57777286)
+collision_layer = 2
+collision_mask = 5
+sync_to_physics = false
+
+[node name="Visual" type="Node3D" parent="MovablePart" unique_id=459473030]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="MovablePart/Visual" unique_id=1953653659]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="MovablePart/Visual/CSGCombiner3D" unique_id=1994003493]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+size = Vector3(1, 0.98535156, 0.2)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="MovablePart/Visual/CSGCombiner3D" unique_id=263329476]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+operation = 2
+size = Vector3(0.7519531, 2, 0.2861328)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MovablePart" unique_id=652092525]
+shape = SubResource("BoxShape3D_13qdw")
+
+[node name="SelectItemArea" type="Area3D" parent="." unique_id=1115841942]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("2_1bbma")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SelectItemArea" unique_id=241096953]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
+shape = SubResource("BoxShape3D_b1lj4")

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b20nb1qg4guw"]
+
+[ext_resource type="Script" uid="uid://c0if7e1ymcycn" path="res://Scenes/Camera/CameraFollower.cs" id="1_th5lh"]
+
+[node name="CameraFollower" type="Node3D" unique_id=1656799676]
+script = ExtResource("1_th5lh")
