@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://4g3q61j17a17"]
 
 [ext_resource type="Script" uid="uid://btvtpl6asym52" path="res://Scenes/Main/Main.cs" id="1_1r6ip"]
+[ext_resource type="Script" uid="uid://bsc3qrbp80dtv" path="res://Scenes/PickableObjects/Joint/JointHelper.cs" id="2_2a143"]
 [ext_resource type="Material" uid="uid://od546mhpih1c" path="res://Assets/GridTextures/m_dark.tres" id="2_lixft"]
 [ext_resource type="PackedScene" uid="uid://b20nb1qg4guw" path="res://Scenes/Camera/camera_follower.tscn" id="2_p6jpk"]
 [ext_resource type="PackedScene" uid="uid://dn5i6hcvvm080" path="res://Scenes/Player/player.tscn" id="3_qw60k"]
+[ext_resource type="PackedScene" uid="uid://bqdpkltm7vkqd" path="res://Scenes/PickableObjects/Joint/pickable_joint.tscn" id="3_xlvfx"]
 [ext_resource type="PackedScene" uid="uid://i5ypf2x1bxdu" path="res://Scenes/PickableObjects/pickable_base.tscn" id="4_5yls4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1r6ip"]
@@ -20,6 +22,12 @@ sky = SubResource("Sky_lixft")
 
 [node name="Main" type="Node3D" unique_id=617152946]
 script = ExtResource("1_1r6ip")
+
+[node name="Helpers" type="Node" parent="." unique_id=68125922]
+
+[node name="JointHelper" type="Node" parent="Helpers" unique_id=363695820]
+script = ExtResource("2_2a143")
+Joint = ExtResource("3_xlvfx")
 
 [node name="CameraFollower" parent="." unique_id=1656799676 node_paths=PackedStringArray("Follow") instance=ExtResource("2_p6jpk")]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
