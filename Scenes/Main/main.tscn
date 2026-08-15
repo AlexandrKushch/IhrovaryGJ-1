@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://btvtpl6asym52" path="res://Scenes/Main/Main.cs" id="1_1r6ip"]
 [ext_resource type="Script" uid="uid://bsc3qrbp80dtv" path="res://Scenes/PickableObjects/Joint/JointHelper.cs" id="2_2a143"]
 [ext_resource type="PackedScene" uid="uid://b20nb1qg4guw" path="res://Scenes/Camera/camera_follower.tscn" id="2_p6jpk"]
-[ext_resource type="PackedScene" uid="uid://c8v6bwbjgfgxi" path="res://Scenes/Main/Levels/level_1.tscn" id="2_xlvfx"]
+[ext_resource type="PackedScene" uid="uid://dm6kfk3drnit7" path="res://Scenes/Main/Levels/level_2.tscn" id="2_xlvfx"]
 [ext_resource type="PackedScene" uid="uid://dn5i6hcvvm080" path="res://Scenes/Player/player.tscn" id="3_qw60k"]
 [ext_resource type="PackedScene" uid="uid://bqdpkltm7vkqd" path="res://Scenes/PickableObjects/Joint/pickable_joint.tscn" id="3_xlvfx"]
 
@@ -22,7 +22,7 @@ sky = SubResource("Sky_lixft")
 [node name="Main" type="Node3D" unique_id=617152946]
 script = ExtResource("1_1r6ip")
 
-[node name="Level1" parent="." unique_id=1693286197 instance=ExtResource("2_xlvfx")]
+[node name="level2" parent="." unique_id=1617633855 instance=ExtResource("2_xlvfx")]
 
 [node name="Helpers" type="Node" parent="." unique_id=68125922]
 
@@ -43,7 +43,7 @@ transform = Transform3D(0.9999619, 0.005609308, -0.0066849133, 0, 0.7660444, 0.6
 environment = SubResource("Environment_qw60k")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment" unique_id=2057716106]
-transform = Transform3D(0.7071068, -0.61237246, 0.3535533, 2.7805946e-08, 0.49999994, 0.86602545, -0.7071067, -0.6123725, 0.35355335, 0, 0, 0)
+transform = Transform3D(0.7071068, -0.61237246, 0.35355327, 2.7805946e-08, 0.49999994, 0.86602545, -0.7071067, -0.6123725, 0.35355338, 14.927818, 0, 0)
 shadow_enabled = true
 
 [node name="Player" parent="." unique_id=1090890824 instance=ExtResource("3_qw60k")]
