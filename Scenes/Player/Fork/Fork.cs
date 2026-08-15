@@ -14,11 +14,13 @@ public partial class Fork : Node3D
     public AnimatableBody3D MovablePart { get; set; }
 
     private AreaController SelectItemArea;
+    private Area3D MinHeightShapeArea;
 
     public override void _Ready()
     {
         MovablePart = GetNode<AnimatableBody3D>(nameof(MovablePart));
         SelectItemArea = GetNode<AreaController>(nameof(SelectItemArea));
+        MinHeightShapeArea = GetNode<Area3D>(nameof(MinHeightShapeArea));
     }
 
     public override void _PhysicsProcess(double delta)
@@ -38,11 +40,11 @@ public partial class Fork : Node3D
         {
             if (TryRayToGround(MovablePart, Vector3.Down, out var collisionPos))
             {
-                _minY = Mathf.Min(Mathf.Max(collisionPos.Y + 0.3f, 0.1f), MaxY);
+                _minY = Mathf.Min(Mathf.Max(collisionPos.Y + 0.5f, 0.2f), MaxY);
             }
             else
             {
-                _minY = 0.1f;
+                _minY = 0.2f;
             }
         }
 

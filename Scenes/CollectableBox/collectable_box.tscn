@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://fdl6jxvt3c11"]
+
+[ext_resource type="Material" uid="uid://od546mhpih1c" path="res://Assets/GridTextures/m_dark.tres" id="1_7fm2i"]
+[ext_resource type="Script" uid="uid://bgl4fdrh7ha3o" path="res://Scenes/CollectableBox/CollectableBox.cs" id="1_o5fxs"]
+[ext_resource type="Script" uid="uid://b2ecds3xves7h" path="res://Scenes/Player/Fork/AreaController.cs" id="2_awnsb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o5fxs"]
+size = Vector3(2, 1.7332764, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xrivr"]
+size = Vector3(2.3408203, 2.5546875, 2.2321777)
+
+[node name="CollectableBox" type="StaticBody3D" unique_id=1123833769]
+collision_mask = 7
+script = ExtResource("1_o5fxs")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=154714581]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1820945069]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+size = Vector3(2, 2, 2)
+material = ExtResource("1_7fm2i")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=127139071]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.89531493, 0)
+operation = 2
+size = Vector3(1.6953125, 1.5292969, 1.6611328)
+material = ExtResource("1_7fm2i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=332882095]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.36663818, 0)
+shape = SubResource("BoxShape3D_o5fxs")
+
+[node name="CollectArea" type="Area3D" parent="." unique_id=956486126]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+collision_mask = 5
+script = ExtResource("2_awnsb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CollectArea" unique_id=1021654014]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.67207336, 0)
+shape = SubResource("BoxShape3D_xrivr")
+
+[node name="SnapToMarker" type="Marker3D" parent="." unique_id=776989380]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
