@@ -10,7 +10,6 @@ public partial class CameraFollower : Node3D
 
     public override void _Process(double delta)
     {
-        float weight = 1f - Mathf.Exp(-Speed * (float)delta);
-        GlobalPosition = GlobalPosition.Lerp(Follow.GlobalPosition, weight);
+        GlobalPosition = Follow.GlobalPosition;
     }
 }

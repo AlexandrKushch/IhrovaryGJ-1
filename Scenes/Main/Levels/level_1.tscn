@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://c8v6bwbjgfgxi"]
+
+[ext_resource type="Material" uid="uid://od546mhpih1c" path="res://Assets/GridTextures/m_dark.tres" id="1_58kxn"]
+[ext_resource type="PackedScene" uid="uid://i5ypf2x1bxdu" path="res://Scenes/PickableObjects/pickable_base.tscn" id="2_v2pdd"]
+[ext_resource type="Resource" uid="uid://cbmwrakedc5fp" path="res://Assets/Pets/pets_pickable.tres" id="3_offyj"]
+
+[node name="Level1" type="Node3D" unique_id=1693286197]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1746625108]
+use_collision = true
+collision_mask = 15
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1490016222]
+material_override = ExtResource("1_58kxn")
+size = Vector3(19.068115, 1, 18.296875)
+material = ExtResource("1_58kxn")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=369223420]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37742233, 0)
+layers = 0
+material_override = ExtResource("1_58kxn")
+operation = 2
+size = Vector3(18, 1, 17)
+material = ExtResource("1_58kxn")
+
+[node name="InteractableObjects" type="Node3D" parent="." unique_id=1178397677]
+
+[node name="PickableBase" parent="InteractableObjects" unique_id=866102197 instance=ExtResource("2_v2pdd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7679434, 1.9674428, -2.6611478)
+Resource = ExtResource("3_offyj")
+
+[node name="PickableBase2" parent="InteractableObjects" unique_id=2046876093 instance=ExtResource("2_v2pdd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11643982, 4.9674425, -2.6611478)
+Resource = ExtResource("3_offyj")
+
+[node name="PickableBase3" parent="InteractableObjects" unique_id=972888785 instance=ExtResource("2_v2pdd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3124762, 6.9674425, -2.6611478)
+Resource = ExtResource("3_offyj")
+
+[node name="PickableBase4" parent="InteractableObjects" unique_id=163435186 instance=ExtResource("2_v2pdd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.778163, 2.0595088, -2.6611478)
+Resource = ExtResource("3_offyj")
+
+[node name="PickableBase5" parent="InteractableObjects" unique_id=1185450241 instance=ExtResource("2_v2pdd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18904305, 3.207293, 6.1375465)
+Resource = ExtResource("3_offyj")
+
+[node name="PickableBase6" parent="InteractableObjects" unique_id=1154580847 instance=ExtResource("2_v2pdd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.550331, 2.7759118, 4.9466314)
+Resource = ExtResource("3_offyj")
+
+[node name="PickableBase7" parent="InteractableObjects" unique_id=1528754719 instance=ExtResource("2_v2pdd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9454298, 2.7759118, 4.9466314)
+Resource = ExtResource("3_offyj")
+
+[node name="PickableBase8" parent="InteractableObjects" unique_id=2122461986 instance=ExtResource("2_v2pdd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.319085, 5.3491006, 3.0045247)
+Resource = ExtResource("3_offyj")
+
+[node name="PickableBase9" parent="InteractableObjects" unique_id=618776322 instance=ExtResource("2_v2pdd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.319085, 5.3491006, -3.4267278)
+Resource = ExtResource("3_offyj")
+
+[node name="PickableBase10" parent="InteractableObjects" unique_id=1934351235 instance=ExtResource("2_v2pdd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4689722, 5.3491006, -3.4947057)
+Resource = ExtResource("3_offyj")

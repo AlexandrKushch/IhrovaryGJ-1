@@ -20,7 +20,7 @@ public partial class Fork : Node3D
     {
         MovablePart = GetNode<AnimatableBody3D>(nameof(MovablePart));
         SelectItemArea = GetNode<AreaController>(nameof(SelectItemArea));
-        MinHeightShapeArea = GetNode<Area3D>(nameof(MinHeightShapeArea));
+        MinHeightShapeArea = MovablePart.GetNode<Area3D>(nameof(MinHeightShapeArea));
     }
 
     public override void _PhysicsProcess(double delta)
@@ -38,9 +38,9 @@ public partial class Fork : Node3D
 
         if (direction < 0)
         {
-            if (TryRayToGround(MovablePart, Vector3.Down, out var collisionPos))
+            if (MinHeightShapeArea.GetOverlappingBodies().Count > 0)
             {
-                _minY = Mathf.Min(Mathf.Max(collisionPos.Y + 0.2f, 0.2f), MaxY);
+                _minY = MovablePart.Position.Y;
             }
             else
             {
@@ -64,7 +64,7 @@ public partial class Fork : Node3D
 
         if (TryRayToGround(closestItem, Vector3.Down, out var collisionPoint))
         {
-            if (Mathf.IsEqualApprox(MovablePart.GlobalPosition.Y, collisionPoint.Y, 0.15))
+            if (Mathf.IsEqualApprox(MovablePart.GlobalPosition.Y, collisionPoint.Y, 0.2))
             {
                 MovablePart.CollisionLayer = 0;
             }

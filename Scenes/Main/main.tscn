@@ -2,13 +2,10 @@
 
 [ext_resource type="Script" uid="uid://btvtpl6asym52" path="res://Scenes/Main/Main.cs" id="1_1r6ip"]
 [ext_resource type="Script" uid="uid://bsc3qrbp80dtv" path="res://Scenes/PickableObjects/Joint/JointHelper.cs" id="2_2a143"]
-[ext_resource type="Material" uid="uid://od546mhpih1c" path="res://Assets/GridTextures/m_dark.tres" id="2_lixft"]
 [ext_resource type="PackedScene" uid="uid://b20nb1qg4guw" path="res://Scenes/Camera/camera_follower.tscn" id="2_p6jpk"]
+[ext_resource type="PackedScene" uid="uid://c8v6bwbjgfgxi" path="res://Scenes/Main/Levels/level_1.tscn" id="2_xlvfx"]
 [ext_resource type="PackedScene" uid="uid://dn5i6hcvvm080" path="res://Scenes/Player/player.tscn" id="3_qw60k"]
 [ext_resource type="PackedScene" uid="uid://bqdpkltm7vkqd" path="res://Scenes/PickableObjects/Joint/pickable_joint.tscn" id="3_xlvfx"]
-[ext_resource type="PackedScene" uid="uid://i5ypf2x1bxdu" path="res://Scenes/PickableObjects/pickable_base.tscn" id="4_5yls4"]
-[ext_resource type="Resource" uid="uid://ofgxe703qmkq" path="res://Assets/Train/train_pickable.tres" id="8_hryqi"]
-[ext_resource type="PackedScene" uid="uid://fdl6jxvt3c11" path="res://Scenes/CollectableBox/collectable_box.tscn" id="8_y3v7k"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1r6ip"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -24,6 +21,8 @@ sky = SubResource("Sky_lixft")
 
 [node name="Main" type="Node3D" unique_id=617152946]
 script = ExtResource("1_1r6ip")
+
+[node name="Level1" parent="." unique_id=1693286197 instance=ExtResource("2_xlvfx")]
 
 [node name="Helpers" type="Node" parent="." unique_id=68125922]
 
@@ -47,41 +46,5 @@ environment = SubResource("Environment_qw60k")
 transform = Transform3D(0.7071068, -0.61237246, 0.3535533, 2.7805946e-08, 0.49999994, 0.86602545, -0.7071067, -0.6123725, 0.35355335, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Level" type="Node3D" parent="." unique_id=1632778096]
-
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Level" unique_id=858425430]
-use_collision = true
-collision_mask = 15
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Level/CSGCombiner3D" unique_id=1377562216]
-material_override = ExtResource("2_lixft")
-size = Vector3(19.068115, 1, 18.296875)
-material = ExtResource("2_lixft")
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="Level/CSGCombiner3D" unique_id=1313702088]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37742233, 0)
-layers = 0
-material_override = ExtResource("2_lixft")
-operation = 2
-size = Vector3(18, 1, 17)
-material = ExtResource("2_lixft")
-
-[node name="InteractableObjects" type="Node3D" parent="." unique_id=550511285]
-
 [node name="Player" parent="." unique_id=1090890824 instance=ExtResource("3_qw60k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3089986, 0.39533138, 3.1535149)
-
-[node name="PickableBase" parent="." unique_id=866102197 instance=ExtResource("4_5yls4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7679434, 1.9674428, -2.6611478)
-Resource = ExtResource("8_hryqi")
-
-[node name="PickableBase2" parent="." unique_id=565815589 instance=ExtResource("4_5yls4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11643982, 4.9674425, -2.6611478)
-Resource = ExtResource("8_hryqi")
-
-[node name="PickableBase3" parent="." unique_id=158214613 instance=ExtResource("4_5yls4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3124762, 6.9674425, -2.6611478)
-Resource = ExtResource("8_hryqi")
-
-[node name="CollectableBox" parent="." unique_id=1123833769 instance=ExtResource("8_y3v7k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1249676, -0.122578144, 2.1620603)
