@@ -23,7 +23,7 @@ public partial class Player : CharacterBody3D
 		Visual = GetNode<PlayerVisual>(nameof(Visual));
 		Fork = GetNode<Fork>(nameof(Fork));
 
-		GetNode<CameraFollower>("ForkCollisionShape").Follow = Fork.MovablePart;
+		GetNode<ForkCollisionShapeFollower>("ForkCollisionShape").Follow = Fork.MovablePart;
 	}
 
 	public override void _PhysicsProcess(double delta)

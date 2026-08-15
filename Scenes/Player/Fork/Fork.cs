@@ -31,19 +31,21 @@ public partial class Fork : Node3D
 
     private void HandleForkMovement(double delta)
     {
-        if (TryRayToGround(MovablePart, Vector3.Down, out var collisionPos))
-        {
-            _minY = Mathf.Min(Mathf.Max(collisionPos.Y + 0.3f, 0.2f), MaxY);
-        }
-        else
-        {
-            _minY = 0.2f;
-        }
-
-        GD.Print(_minY);
-
         var position = MovablePart.Position;
         var direction = Input.GetAxis("fork_down", "fork_up");
+
+        if (direction < 0)
+        {
+            if (TryRayToGround(MovablePart, Vector3.Down, out var collisionPos))
+            {
+                _minY = Mathf.Min(Mathf.Max(collisionPos.Y + 0.3f, 0.1f), MaxY);
+            }
+            else
+            {
+                _minY = 0.1f;
+            }
+        }
+
         position.Y = (float)Mathf.MoveToward(MovablePart.Position.Y, MovablePart.Position.Y + direction, Speed * delta);
         position.Y = Mathf.Clamp(position.Y, _minY, MaxY);
         MovablePart.Position = position;
@@ -53,13 +55,14 @@ public partial class Fork : Node3D
     {
         MovablePart.CollisionLayer = 2; // Player
 
+        if (IsInstanceValid(_carriage)) return;
         if (SelectItemArea.Bodies.Count == 0) return;
 
         var closestItem = SelectItemArea.Bodies.MinBy(x => x.GlobalPosition.DistanceTo(MovablePart.GlobalPosition));
 
         if (TryRayToGround(closestItem, Vector3.Down, out var collisionPoint))
         {
-            if (Mathf.IsEqualApprox(MovablePart.GlobalPosition.Y, collisionPoint.Y, 0.1))
+            if (Mathf.IsEqualApprox(MovablePart.GlobalPosition.Y, collisionPoint.Y, 0.15))
             {
                 MovablePart.CollisionLayer = 0;
             }
