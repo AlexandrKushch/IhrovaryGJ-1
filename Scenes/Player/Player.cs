@@ -49,6 +49,8 @@ public partial class Player : CharacterBody3D
         if (accelerationInput != 0)
         {
             velocity = (-GlobalBasis.Z * accelerationInput).Normalized() * Speed * delta;
+
+			Visual.SpinWheels(accelerationInput, delta);
         }
         else
         {
