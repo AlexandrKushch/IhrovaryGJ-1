@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://cibwvhhen5leg" path="res://Assets/Blasters/blaster-b.glb" id="2_swvc4"]
 [ext_resource type="PackedScene" uid="uid://yga7fcqmrb4y" path="res://Assets/Blasters/blaster-c.glb" id="3_cjfm8"]
 [ext_resource type="PackedScene" uid="uid://bfga40e0k30ww" path="res://Assets/Blasters/blaster-d.glb" id="4_otg80"]
-[ext_resource type="PackedScene" uid="uid://bggnee6gtm4an" path="res://Assets/Blasters/blaster-e.glb" id="5_jb7by"]
 [ext_resource type="PackedScene" uid="uid://cjk8iha5xp4nv" path="res://Assets/Blasters/blaster-f.glb" id="6_i6lot"]
 [ext_resource type="PackedScene" uid="uid://d1nlt0c24dfv1" path="res://Assets/Blasters/blaster-g.glb" id="7_ji6kn"]
 [ext_resource type="PackedScene" uid="uid://btx6mj8est7un" path="res://Assets/Blasters/blaster-h.glb" id="8_br30h"]
@@ -22,5 +21,7 @@
 
 [resource]
 script = ExtResource("1_djks1")
-Items = Array[PackedScene]([ExtResource("1_6jq5k"), ExtResource("2_swvc4"), ExtResource("3_cjfm8"), ExtResource("4_otg80"), ExtResource("5_jb7by"), ExtResource("6_i6lot"), ExtResource("7_ji6kn"), ExtResource("8_br30h"), ExtResource("9_tu8ae"), ExtResource("10_hbj6b"), ExtResource("11_rrird"), ExtResource("12_6n5kg"), ExtResource("13_fk0gr"), ExtResource("14_mx55u"), ExtResource("15_5ulr6"), ExtResource("16_th1mi"), ExtResource("17_sr3pv"), ExtResource("18_ktlyy")])
+Items = Array[PackedScene]([ExtResource("1_6jq5k"), ExtResource("2_swvc4"), ExtResource("3_cjfm8"), ExtResource("4_otg80"), ExtResource("6_i6lot"), ExtResource("7_ji6kn"), ExtResource("8_br30h"), ExtResource("9_tu8ae"), ExtResource("10_hbj6b"), ExtResource("11_rrird"), ExtResource("12_6n5kg"), ExtResource("13_fk0gr"), ExtResource("14_mx55u"), ExtResource("15_5ulr6"), ExtResource("16_th1mi"), ExtResource("17_sr3pv"), ExtResource("18_ktlyy")])
+GenerateCollisionShape = true
+Scale = 3.0
 metadata/_custom_type_script = "uid://cmckoveyut7dy"

@@ -4,7 +4,7 @@ using System.Linq;
 
 public partial class PickableVisual : Node3D
 {
-    private MeshInstance3D[] _meshes;
+    public MeshInstance3D[] Meshes { get; private set; }
 
     [Export]
     private ShaderMaterial _outlineShader;
@@ -16,7 +16,7 @@ public partial class PickableVisual : Node3D
         var item = itemScene.Instantiate<Node3D>();
         AddChild(item);
 
-        _meshes = item.FindChildren("*")
+        Meshes = item.FindChildren("*")
             .Where(x => x is MeshInstance3D mesh && mesh != null)
             .Select(x => x as MeshInstance3D)
             .ToArray();
@@ -26,7 +26,7 @@ public partial class PickableVisual : Node3D
 
     public void UpdateSelected(bool selected)
     {
-        foreach (var mesh in _meshes)
+        foreach (var mesh in Meshes)
         {
             mesh.MaterialOverlay = selected ? _outlineShader : null;
         }

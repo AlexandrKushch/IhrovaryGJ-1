@@ -64,7 +64,7 @@ public partial class Fork : Node3D
 
         if (TryRayToGround(closestItem, Vector3.Down, out var collisionPoint))
         {
-            if (Mathf.IsEqualApprox(MovablePart.GlobalPosition.Y, collisionPoint.Y, 0.2))
+            if (Mathf.IsEqualApprox(MovablePart.GlobalPosition.Y, collisionPoint.Y, 0.5))
             {
                 MovablePart.CollisionLayer = 0;
             }
