@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="PrickableResource" format=3 uid="uid://cbmwrakedc5fp"]
+
+[ext_resource type="PackedScene" uid="uid://dt4bhmsdhgm4r" path="res://Assets/Pets/animal-beaver.glb" id="1_225lo"]
+[ext_resource type="Script" uid="uid://cmckoveyut7dy" path="res://Scenes/PickableObjects/PrickableResource.cs" id="1_n7m28"]
+[ext_resource type="PackedScene" uid="uid://colgyvxkiuvxo" path="res://Assets/Pets/animal-bee.glb" id="2_j0nfi"]
+[ext_resource type="PackedScene" uid="uid://ben8d2xdmxekg" path="res://Assets/Pets/animal-bunny.glb" id="3_bobep"]
+[ext_resource type="PackedScene" uid="uid://ddbfouwwbwl8b" path="res://Assets/Pets/animal-cat.glb" id="4_dqrd4"]
+[ext_resource type="PackedScene" uid="uid://dfib2tfmp4b6q" path="res://Assets/Pets/animal-caterpillar.glb" id="5_oxlyo"]
+[ext_resource type="PackedScene" uid="uid://ch8eu4u6oddh4" path="res://Assets/Pets/animal-chick.glb" id="6_abrmt"]
+[ext_resource type="PackedScene" uid="uid://bg4dp2knrl8am" path="res://Assets/Pets/animal-cow.glb" id="7_r40i6"]
+[ext_resource type="PackedScene" uid="uid://calpisr3xiyey" path="res://Assets/Pets/animal-crab.glb" id="8_eu2di"]
+[ext_resource type="PackedScene" uid="uid://chr56bu5p0hoj" path="res://Assets/Pets/animal-deer.glb" id="9_l67fw"]
+[ext_resource type="PackedScene" uid="uid://skgofk6dh1x6" path="res://Assets/Pets/animal-dog.glb" id="10_mjcof"]
+[ext_resource type="PackedScene" uid="uid://bhlt1m5ersvh7" path="res://Assets/Pets/animal-elephant.glb" id="11_184yu"]
+[ext_resource type="PackedScene" uid="uid://bhco4l6v6rbhf" path="res://Assets/Pets/animal-fish.glb" id="12_7ktw7"]
+[ext_resource type="PackedScene" uid="uid://b578ny5poc4bg" path="res://Assets/Pets/animal-fox.glb" id="13_4yvsp"]
+[ext_resource type="PackedScene" uid="uid://4rsv8gr82qde" path="res://Assets/Pets/animal-giraffe.glb" id="14_2gyul"]
+[ext_resource type="PackedScene" uid="uid://cvuwl6jhf3e2r" path="res://Assets/Pets/animal-hog.glb" id="15_847cv"]
+[ext_resource type="PackedScene" uid="uid://cpukdng8pxo4v" path="res://Assets/Pets/animal-koala.glb" id="16_yp7ag"]
+[ext_resource type="PackedScene" uid="uid://cpd0webl4o7lg" path="res://Assets/Pets/animal-lion.glb" id="17_efntj"]
+[ext_resource type="PackedScene" uid="uid://cpexjigcr0eew" path="res://Assets/Pets/animal-monkey.glb" id="18_733d0"]
+[ext_resource type="PackedScene" uid="uid://doahwxhguwo1p" path="res://Assets/Pets/animal-panda.glb" id="19_mdfmj"]
+[ext_resource type="PackedScene" uid="uid://ri2hasbgj5w8" path="res://Assets/Pets/animal-parrot.glb" id="20_mn6hn"]
+[ext_resource type="PackedScene" uid="uid://bilhsr0tpe778" path="res://Assets/Pets/animal-penguin.glb" id="21_f2wnx"]
+[ext_resource type="PackedScene" uid="uid://du4i5cpaks2q4" path="res://Assets/Pets/animal-pig.glb" id="22_gh0gq"]
+[ext_resource type="PackedScene" uid="uid://c1a31k0k8fqew" path="res://Assets/Pets/animal-polar.glb" id="23_em18l"]
+[ext_resource type="PackedScene" uid="uid://cpnjiphn2ocjd" path="res://Assets/Pets/animal-tiger.glb" id="24_1cfvg"]
+
+[resource]
+script = ExtResource("1_n7m28")
+Items = Array[PackedScene]([ExtResource("1_225lo"), ExtResource("2_j0nfi"), ExtResource("3_bobep"), ExtResource("4_dqrd4"), ExtResource("5_oxlyo"), ExtResource("6_abrmt"), ExtResource("7_r40i6"), ExtResource("8_eu2di"), ExtResource("9_l67fw"), ExtResource("10_mjcof"), ExtResource("11_184yu"), ExtResource("12_7ktw7"), ExtResource("13_4yvsp"), ExtResource("14_2gyul"), ExtResource("15_847cv"), ExtResource("16_yp7ag"), ExtResource("17_efntj"), ExtResource("18_733d0"), ExtResource("19_mdfmj"), ExtResource("20_mn6hn"), ExtResource("21_f2wnx"), ExtResource("22_gh0gq"), ExtResource("23_em18l"), ExtResource("24_1cfvg")])
+metadata/_custom_type_script = "uid://cmckoveyut7dy"

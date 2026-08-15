@@ -1,4 +1,5 @@
 using Godot;
+using System;
 using System.Linq;
 
 public partial class PickableVisual : Node3D
@@ -10,10 +11,12 @@ public partial class PickableVisual : Node3D
 
     public override void _Ready()
     {
-        // _outlineShader = _outlineShader.Duplicate() as ShaderMaterial;
-        // GD.Print(_outlineShader.ResourceSceneUniqueId);
+        var resource = GetParent<PickableBase>().Resource;
+        var itemScene = resource.Items[new Random().NextInt64(resource.Items.Length)];
+        var item = itemScene.Instantiate<Node3D>();
+        AddChild(item);
 
-        _meshes = GetChildren()
+        _meshes = item.FindChildren("*")
             .Where(x => x is MeshInstance3D mesh && mesh != null)
             .Select(x => x as MeshInstance3D)
             .ToArray();

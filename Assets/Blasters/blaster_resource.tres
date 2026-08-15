@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="PrickableResource" format=3 uid="uid://clx506oiai1so"]
+
+[ext_resource type="PackedScene" uid="uid://dsuv8oujtk4lj" path="res://Assets/Blasters/blaster-a.glb" id="1_6jq5k"]
+[ext_resource type="Script" uid="uid://cmckoveyut7dy" path="res://Scenes/PickableObjects/PrickableResource.cs" id="1_djks1"]
+[ext_resource type="PackedScene" uid="uid://cibwvhhen5leg" path="res://Assets/Blasters/blaster-b.glb" id="2_swvc4"]
+[ext_resource type="PackedScene" uid="uid://yga7fcqmrb4y" path="res://Assets/Blasters/blaster-c.glb" id="3_cjfm8"]
+[ext_resource type="PackedScene" uid="uid://bfga40e0k30ww" path="res://Assets/Blasters/blaster-d.glb" id="4_otg80"]
+[ext_resource type="PackedScene" uid="uid://bggnee6gtm4an" path="res://Assets/Blasters/blaster-e.glb" id="5_jb7by"]
+[ext_resource type="PackedScene" uid="uid://cjk8iha5xp4nv" path="res://Assets/Blasters/blaster-f.glb" id="6_i6lot"]
+[ext_resource type="PackedScene" uid="uid://d1nlt0c24dfv1" path="res://Assets/Blasters/blaster-g.glb" id="7_ji6kn"]
+[ext_resource type="PackedScene" uid="uid://btx6mj8est7un" path="res://Assets/Blasters/blaster-h.glb" id="8_br30h"]
+[ext_resource type="PackedScene" uid="uid://bilcklb7fumcp" path="res://Assets/Blasters/blaster-i.glb" id="9_tu8ae"]
+[ext_resource type="PackedScene" uid="uid://cxmvux8wc0bib" path="res://Assets/Blasters/blaster-j.glb" id="10_hbj6b"]
+[ext_resource type="PackedScene" uid="uid://wl1mmgmthqsh" path="res://Assets/Blasters/blaster-k.glb" id="11_rrird"]
+[ext_resource type="PackedScene" uid="uid://dk1nc0of685ue" path="res://Assets/Blasters/blaster-l.glb" id="12_6n5kg"]
+[ext_resource type="PackedScene" uid="uid://dcikvllqa8qud" path="res://Assets/Blasters/blaster-m.glb" id="13_fk0gr"]
+[ext_resource type="PackedScene" uid="uid://ck767i01jsn1j" path="res://Assets/Blasters/blaster-n.glb" id="14_mx55u"]
+[ext_resource type="PackedScene" uid="uid://bpc745mk57mkk" path="res://Assets/Blasters/blaster-o.glb" id="15_5ulr6"]
+[ext_resource type="PackedScene" uid="uid://ccbc4wlyf4d0k" path="res://Assets/Blasters/blaster-p.glb" id="16_th1mi"]
+[ext_resource type="PackedScene" uid="uid://b71c5ndkn8us3" path="res://Assets/Blasters/blaster-q.glb" id="17_sr3pv"]
+[ext_resource type="PackedScene" uid="uid://b41ip4aunu4k5" path="res://Assets/Blasters/blaster-r.glb" id="18_ktlyy"]
+
+[resource]
+script = ExtResource("1_djks1")
+Items = Array[PackedScene]([ExtResource("1_6jq5k"), ExtResource("2_swvc4"), ExtResource("3_cjfm8"), ExtResource("4_otg80"), ExtResource("5_jb7by"), ExtResource("6_i6lot"), ExtResource("7_ji6kn"), ExtResource("8_br30h"), ExtResource("9_tu8ae"), ExtResource("10_hbj6b"), ExtResource("11_rrird"), ExtResource("12_6n5kg"), ExtResource("13_fk0gr"), ExtResource("14_mx55u"), ExtResource("15_5ulr6"), ExtResource("16_th1mi"), ExtResource("17_sr3pv"), ExtResource("18_ktlyy")])
+metadata/_custom_type_script = "uid://cmckoveyut7dy"

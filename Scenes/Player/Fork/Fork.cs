@@ -40,7 +40,7 @@ public partial class Fork : Node3D
         {
             if (TryRayToGround(MovablePart, Vector3.Down, out var collisionPos))
             {
-                _minY = Mathf.Min(Mathf.Max(collisionPos.Y + 0.5f, 0.2f), MaxY);
+                _minY = Mathf.Min(Mathf.Max(collisionPos.Y + 0.2f, 0.2f), MaxY);
             }
             else
             {

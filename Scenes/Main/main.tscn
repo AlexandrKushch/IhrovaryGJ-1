@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dn5i6hcvvm080" path="res://Scenes/Player/player.tscn" id="3_qw60k"]
 [ext_resource type="PackedScene" uid="uid://bqdpkltm7vkqd" path="res://Scenes/PickableObjects/Joint/pickable_joint.tscn" id="3_xlvfx"]
 [ext_resource type="PackedScene" uid="uid://i5ypf2x1bxdu" path="res://Scenes/PickableObjects/pickable_base.tscn" id="4_5yls4"]
+[ext_resource type="Resource" uid="uid://ofgxe703qmkq" path="res://Assets/Train/train_pickable.tres" id="8_hryqi"]
 [ext_resource type="PackedScene" uid="uid://fdl6jxvt3c11" path="res://Scenes/CollectableBox/collectable_box.tscn" id="8_y3v7k"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1r6ip"]
@@ -72,12 +73,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3089986, 0.39533138, 3.153
 
 [node name="PickableBase" parent="." unique_id=866102197 instance=ExtResource("4_5yls4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7679434, 1.9674428, -2.6611478)
+Resource = ExtResource("8_hryqi")
 
 [node name="PickableBase2" parent="." unique_id=565815589 instance=ExtResource("4_5yls4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11643982, 4.9674425, -2.6611478)
+Resource = ExtResource("8_hryqi")
 
 [node name="PickableBase3" parent="." unique_id=158214613 instance=ExtResource("4_5yls4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3124762, 6.9674425, -2.6611478)
+Resource = ExtResource("8_hryqi")
 
 [node name="CollectableBox" parent="." unique_id=1123833769 instance=ExtResource("8_y3v7k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1249676, -0.122578144, 2.1620603)

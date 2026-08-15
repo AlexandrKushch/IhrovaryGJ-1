@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="PrickableResource" format=3 uid="uid://bpilagi8j2na1"]
+
+[ext_resource type="Script" uid="uid://cmckoveyut7dy" path="res://Scenes/PickableObjects/PrickableResource.cs" id="1_7vqds"]
+[ext_resource type="PackedScene" uid="uid://dt0y007c6oied" path="res://Assets/Cars/ambulance.glb" id="1_pp062"]
+[ext_resource type="PackedScene" uid="uid://g8o3ssk81onw" path="res://Assets/Cars/box.glb" id="2_rf5eq"]
+[ext_resource type="PackedScene" uid="uid://ctmw1icoerfn5" path="res://Assets/Cars/delivery-flat.glb" id="3_7ytr8"]
+[ext_resource type="PackedScene" uid="uid://cla5577kfh6i" path="res://Assets/Cars/delivery.glb" id="4_7citv"]
+[ext_resource type="PackedScene" uid="uid://nqbqer3blrrk" path="res://Assets/Cars/firetruck.glb" id="5_q7e71"]
+[ext_resource type="PackedScene" uid="uid://bymem2dbr5quu" path="res://Assets/Cars/garbage-truck.glb" id="6_vqa10"]
+[ext_resource type="PackedScene" uid="uid://c0wniuo1osqt0" path="res://Assets/Cars/hatchback-sports.glb" id="7_2mfw8"]
+[ext_resource type="PackedScene" uid="uid://6l0g6gx4nvm6" path="res://Assets/Cars/police.glb" id="8_hr2yk"]
+[ext_resource type="PackedScene" uid="uid://blhogy8cfwblf" path="res://Assets/Cars/race-future.glb" id="9_7bmtc"]
+[ext_resource type="PackedScene" uid="uid://vbdqmjrpknf8" path="res://Assets/Cars/race.glb" id="10_gmm88"]
+[ext_resource type="PackedScene" uid="uid://djdy0nlevjcve" path="res://Assets/Cars/sedan-sports.glb" id="11_xfwnq"]
+[ext_resource type="PackedScene" uid="uid://dy5ld0uomsqou" path="res://Assets/Cars/sedan.glb" id="12_56x22"]
+[ext_resource type="PackedScene" uid="uid://5kmhyokvdtw1" path="res://Assets/Cars/suv-luxury.glb" id="13_5ev5i"]
+[ext_resource type="PackedScene" uid="uid://ctsjdsl05x3em" path="res://Assets/Cars/suv.glb" id="14_enpdu"]
+[ext_resource type="PackedScene" uid="uid://c8u6p8dnb23ju" path="res://Assets/Cars/taxi.glb" id="15_mfasi"]
+[ext_resource type="PackedScene" uid="uid://eav762b2r054" path="res://Assets/Cars/tractor-police.glb" id="16_x6jkm"]
+[ext_resource type="PackedScene" uid="uid://br0x3as2hp1s4" path="res://Assets/Cars/tractor-shovel.glb" id="17_tcx8q"]
+[ext_resource type="PackedScene" uid="uid://bpr37dcf0vmja" path="res://Assets/Cars/tractor.glb" id="18_a34kb"]
+[ext_resource type="PackedScene" uid="uid://d3n3q53wo4co5" path="res://Assets/Cars/truck-flat.glb" id="19_1v53q"]
+[ext_resource type="PackedScene" uid="uid://yybjmbhf7cxt" path="res://Assets/Cars/truck.glb" id="20_mjdyr"]
+[ext_resource type="PackedScene" uid="uid://cotnn17oo7fji" path="res://Assets/Cars/van.glb" id="21_f3fml"]
+
+[resource]
+script = ExtResource("1_7vqds")
+Items = Array[PackedScene]([ExtResource("1_pp062"), ExtResource("2_rf5eq"), ExtResource("3_7ytr8"), ExtResource("4_7citv"), ExtResource("5_q7e71"), ExtResource("6_vqa10"), ExtResource("7_2mfw8"), ExtResource("8_hr2yk"), ExtResource("9_7bmtc"), ExtResource("10_gmm88"), ExtResource("11_xfwnq"), ExtResource("12_56x22"), ExtResource("13_5ev5i"), ExtResource("14_enpdu"), ExtResource("15_mfasi"), ExtResource("16_x6jkm"), ExtResource("17_tcx8q"), ExtResource("18_a34kb"), ExtResource("19_1v53q"), ExtResource("20_mjdyr"), ExtResource("21_f3fml")])
+metadata/_custom_type_script = "uid://cmckoveyut7dy"
