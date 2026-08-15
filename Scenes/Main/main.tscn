@@ -63,6 +63,22 @@ operation = 2
 size = Vector3(18, 1, 17)
 material = ExtResource("2_lixft")
 
+[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="Level" unique_id=459897579]
+use_collision = true
+collision_mask = 7
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Level/CSGCombiner3D2" unique_id=1344349356]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0744085, 0.709942, 0)
+material_override = ExtResource("2_lixft")
+size = Vector3(1.9177246, 1.6650391, 1.6923828)
+material = ExtResource("2_lixft")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Level/CSGCombiner3D2" unique_id=91229486]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0744085, 0.37882626, 4)
+material_override = ExtResource("2_lixft")
+size = Vector3(1.9177246, 1.0028076, 1.6923828)
+material = ExtResource("2_lixft")
+
 [node name="InteractableObjects" type="Node3D" parent="." unique_id=550511285]
 
 [node name="Player" parent="." unique_id=1090890824 instance=ExtResource("3_qw60k")]

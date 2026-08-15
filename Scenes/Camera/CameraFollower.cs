@@ -6,7 +6,7 @@ public partial class CameraFollower : Node3D
     private const float Speed = 10.0f;
 
     [Export]
-    private Node3D Follow;
+    public Node3D Follow { get; set; }
 
     public override void _Process(double delta)
     {

@@ -3,10 +3,14 @@
 [ext_resource type="Script" uid="uid://c83nvdy324ybw" path="res://Scenes/Player/Player.cs" id="1_uvnfx"]
 [ext_resource type="Script" uid="uid://b44y7o4p3hf07" path="res://Scenes/Player/PlayerVisual.cs" id="2_a3d8c"]
 [ext_resource type="PackedScene" uid="uid://m8gmbme0cdna" path="res://Scenes/Player/Fork/fork.tscn" id="3_xpcdj"]
+[ext_resource type="Script" uid="uid://c0if7e1ymcycn" path="res://Scenes/Camera/CameraFollower.cs" id="4_mtuoh"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uvnfx"]
 radius = 0.94140625
 height = 2.866211
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xrivr"]
+size = Vector3(1, 0.2614746, 1)
 
 [node name="Player" type="CharacterBody3D" unique_id=1090890824]
 collision_layer = 2
@@ -51,3 +55,8 @@ shape = SubResource("CapsuleShape3D_uvnfx")
 
 [node name="Fork" parent="." unique_id=332197759 instance=ExtResource("3_xpcdj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.026188493, -1.2803258)
+
+[node name="ForkCollisionShape" type="CollisionShape3D" parent="." unique_id=969188871]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1407538, -1.8726511)
+shape = SubResource("BoxShape3D_xrivr")
+script = ExtResource("4_mtuoh")

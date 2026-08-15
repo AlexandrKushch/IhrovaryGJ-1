@@ -10,6 +10,8 @@ public partial class Player : CharacterBody3D
 
 	private PlayerVisual Visual;
 
+	private Fork Fork;
+
 	[Export]
 	public float TireTurnSpeed { get; set; } = 2.0f;
 
@@ -19,6 +21,9 @@ public partial class Player : CharacterBody3D
 	public override void _Ready()
 	{
 		Visual = GetNode<PlayerVisual>(nameof(Visual));
+		Fork = GetNode<Fork>(nameof(Fork));
+
+		GetNode<CameraFollower>("ForkCollisionShape").Follow = Fork.MovablePart;
 	}
 
 	public override void _PhysicsProcess(double delta)

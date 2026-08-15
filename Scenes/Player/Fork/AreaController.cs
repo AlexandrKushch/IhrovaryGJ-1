@@ -11,6 +11,8 @@ public partial class AreaController : Area3D
 
         Connect(Area3D.SignalName.BodyEntered, new Callable(this, nameof(OnBodyEntered)));
         Connect(Area3D.SignalName.BodyExited, new Callable(this, nameof(OnBodyExited)));
+        Connect(Area3D.SignalName.AreaEntered, new Callable(this, nameof(OnBodyEntered)));
+        Connect(Area3D.SignalName.AreaExited, new Callable(this, nameof(OnBodyExited)));
     }
 
     public void OnBodyEntered(Node3D node)
