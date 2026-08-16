@@ -372,6 +372,7 @@ height = 2.866211
 size = Vector3(1, 0.2614746, 1)
 
 [node name="Player" type="CharacterBody3D" unique_id=1090890824]
+process_mode = 1
 collision_layer = 2
 script = ExtResource("1_uvnfx")
 

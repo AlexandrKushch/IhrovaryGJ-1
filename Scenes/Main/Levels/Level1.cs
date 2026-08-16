@@ -12,6 +12,8 @@ public partial class Level1 : Node3D
     [Export]
     private Node3D Objects;
 
+    [Export]
+    private Control TaskLabel;
     
     public override void _Ready()
     {
@@ -23,6 +25,11 @@ public partial class Level1 : Node3D
     
     public override void _Process(double delta)
     {
+        if (Input.IsActionJustReleased("ui_cancel"))
+        {
+            TaskLabel.Visible = !TaskLabel.Visible;
+        }
+
         var objectsOutOfBounds = _objects.Where(x => IsInstanceValid(x) && x.GlobalPosition.Y <= -3).ToArray();
 
         if (objectsOutOfBounds != null
@@ -36,9 +43,14 @@ public partial class Level1 : Node3D
                 if (_currentCount == _maxCountObjects)
                 {
                     GD.Print("Done");
-                    LevelManager.Instance.SwitchToNextLevel();
+                    LevelManager.Instance.SwitchToLevel(LevelManager.Instance.CurrentLevelIndex + 1);
                 }
             }
         }
+    }
+
+    public void ShowTask()
+    {
+        TaskLabel.Visible = true;
     }
 }

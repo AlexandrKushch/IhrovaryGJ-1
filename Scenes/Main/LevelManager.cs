@@ -2,13 +2,13 @@ using Godot;
 
 public partial class LevelManager : Node3D
 {
-    private int _currentLevelIndex = 1;
+    public int CurrentLevelIndex { get; private set; } = 0;
     private Node3D _currentLevel;
 
     public static LevelManager Instance { get; private set; }
 
     [Export]
-    private PackedScene[] Levels;
+    public PackedScene[] Levels;
 
     public override void _Ready()
     {
@@ -17,25 +17,24 @@ public partial class LevelManager : Node3D
             Instance = this;
         }
 
-        SwitchToNextLevel();
+        SwitchToLevel(0);
     }
 
-
-    public void SwitchToNextLevel()
+    public void SwitchToLevel(int index)
     {
         if (IsInstanceValid(_currentLevel))
         {
             _currentLevel.QueueFree();
         }
 
-        if (_currentLevelIndex >= Levels.Length)
+        if (index >= Levels.Length || index < 0)
         {
             GD.PushError("No more levels");
             return;
         }
 
-        _currentLevel = Levels[_currentLevelIndex].Instantiate<Node3D>();
+        CurrentLevelIndex = index;
+        _currentLevel = Levels[CurrentLevelIndex].Instantiate<Node3D>();
         AddChild(_currentLevel);
-        _currentLevelIndex++;
     }
 }

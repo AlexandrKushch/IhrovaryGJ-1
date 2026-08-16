@@ -4,24 +4,39 @@
 [ext_resource type="Script" uid="uid://bsc3qrbp80dtv" path="res://Scenes/PickableObjects/Joint/JointHelper.cs" id="2_2a143"]
 [ext_resource type="PackedScene" uid="uid://dm6kfk3drnit7" path="res://Scenes/Main/Levels/level_2.tscn" id="2_xlvfx"]
 [ext_resource type="PackedScene" uid="uid://bqdpkltm7vkqd" path="res://Scenes/PickableObjects/Joint/pickable_joint.tscn" id="3_xlvfx"]
+[ext_resource type="Texture2D" uid="uid://8j5ianwjaotf" path="res://Assets/HDRs/HDR_artificial_planet.hdr" id="4_hryqi"]
 [ext_resource type="Script" uid="uid://dfuv6gq6fgm18" path="res://Scenes/Main/LevelManager.cs" id="5_xlvfx"]
+[ext_resource type="PackedScene" uid="uid://bdoar7tknnl2p" path="res://Scenes/Main/Levels/main_menu.tscn" id="5_y3v7k"]
 [ext_resource type="PackedScene" uid="uid://c8v6bwbjgfgxi" path="res://Scenes/Main/Levels/level_1.tscn" id="6_y3v7k"]
 [ext_resource type="AudioStream" uid="uid://dsr7vk0av2jb6" path="res://Sounds/Ambient/ambient3.mp3" id="7_xlvfx"]
+[ext_resource type="PackedScene" uid="uid://jk5heh0e81as" path="res://Scenes/Main/Levels/end_game.tscn" id="9_4e4y2"]
+[ext_resource type="Script" uid="uid://bl2rkm4qgfhnw" path="res://Scenes/Main/PauseMenuControl.cs" id="10_hfg1r"]
+[ext_resource type="FontFile" uid="uid://l66txk5l2hp0" path="res://Fonts/DynaPuff-VariableFont_wdth,wght.ttf" id="10_imbg2"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1r6ip"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_geuo3"]
+panorama = ExtResource("4_hryqi")
+energy_multiplier = 15.0
 
 [sub_resource type="Sky" id="Sky_lixft"]
-sky_material = SubResource("ProceduralSkyMaterial_1r6ip")
+sky_material = SubResource("PanoramaSkyMaterial_geuo3")
 
 [sub_resource type="Environment" id="Environment_qw60k"]
-background_mode = 1
+background_mode = 2
 background_color = Color(0.20631605, 0.21211797, 0.19030342, 1)
 sky = SubResource("Sky_lixft")
 
-[node name="Main" type="Node3D" unique_id=617152946]
+[sub_resource type="Gradient" id="Gradient_hryqi"]
+colors = PackedColorArray(1, 1, 1, 0, 0, 0, 0, 0.28235295)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xrivr"]
+gradient = SubResource("Gradient_hryqi")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Main" type="Node3D" unique_id=617152946 node_paths=PackedStringArray("PauseMenu")]
+process_mode = 3
 script = ExtResource("1_1r6ip")
+PauseMenu = NodePath("PauseManu/Control")
 
 [node name="Helpers" type="Node" parent="." unique_id=68125922]
 
@@ -38,12 +53,96 @@ environment = SubResource("Environment_qw60k")
 transform = Transform3D(0.7071068, -0.61237246, 0.35355327, 2.7805946e-08, 0.49999994, 0.86602545, -0.7071067, -0.6123725, 0.35355338, 14.927818, 0, 0)
 shadow_enabled = true
 
+[node name="ShadowLayer" type="CanvasLayer" parent="Environment" unique_id=1983554179]
+
+[node name="Control" type="Control" parent="Environment/ShadowLayer" unique_id=1104914343]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Environment/ShadowLayer/Control" unique_id=404093254]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_xrivr")
+
 [node name="LevelManager" type="Node3D" parent="." unique_id=72750435]
 script = ExtResource("5_xlvfx")
-Levels = Array[PackedScene]([ExtResource("6_y3v7k"), ExtResource("2_xlvfx")])
+Levels = Array[PackedScene]([ExtResource("5_y3v7k"), ExtResource("6_y3v7k"), ExtResource("2_xlvfx"), ExtResource("9_4e4y2")])
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=801169552]
 stream = ExtResource("7_xlvfx")
 volume_db = -10.0
 autoplay = true
 bus = &"Music"
+
+[node name="PauseManu" type="CanvasLayer" parent="." unique_id=1529425862]
+
+[node name="Control" type="Control" parent="PauseManu" unique_id=1775002587 node_paths=PackedStringArray("PrevButton", "NextButton")]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("10_hfg1r")
+PrevButton = NodePath("VBoxContainer/HBoxContainer/PrevButton")
+NextButton = NodePath("VBoxContainer/HBoxContainer/NextButton")
+
+[node name="Panel" type="Panel" parent="PauseManu/Control" unique_id=1816008166]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseManu/Control" unique_id=934969095]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = 83.0
+offset_right = 50.0
+offset_bottom = 143.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ContinueButton" type="Button" parent="PauseManu/Control/VBoxContainer" unique_id=1164577031]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_imbg2")
+text = "Continue"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PauseManu/Control/VBoxContainer" unique_id=733075577]
+layout_mode = 2
+
+[node name="PrevButton" type="Button" parent="PauseManu/Control/VBoxContainer/HBoxContainer" unique_id=1808174746]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_imbg2")
+text = "Previous Level"
+
+[node name="NextButton" type="Button" parent="PauseManu/Control/VBoxContainer/HBoxContainer" unique_id=1603164339]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_imbg2")
+text = "Next Level"
+
+[node name="ExitButton" type="Button" parent="PauseManu/Control/VBoxContainer" unique_id=695497376]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_imbg2")
+text = "Exit"
+
+[connection signal="button_up" from="PauseManu/Control/VBoxContainer/ContinueButton" to="PauseManu/Control" method="OnContinue"]
+[connection signal="button_up" from="PauseManu/Control/VBoxContainer/HBoxContainer/PrevButton" to="PauseManu/Control" method="OnPrevLevel"]
+[connection signal="button_up" from="PauseManu/Control/VBoxContainer/HBoxContainer/NextButton" to="PauseManu/Control" method="OnNextLevel"]
+[connection signal="button_up" from="PauseManu/Control/VBoxContainer/ExitButton" to="PauseManu/Control" method="OnExit"]

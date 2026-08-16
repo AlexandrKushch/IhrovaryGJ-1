@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://jk5heh0e81as"]
+
+[ext_resource type="FontFile" uid="uid://l66txk5l2hp0" path="res://Fonts/DynaPuff-VariableFont_wdth,wght.ttf" id="1_ayau6"]
+[ext_resource type="Script" uid="uid://bh5t47fr224v4" path="res://Scenes/Main/Levels/Spawner.cs" id="2_q0lv0"]
+[ext_resource type="PackedScene" uid="uid://i5ypf2x1bxdu" path="res://Scenes/PickableObjects/pickable_base.tscn" id="3_5gnbw"]
+[ext_resource type="Resource" uid="uid://bpilagi8j2na1" path="res://Assets/Cars/cars_pickable.tres" id="4_641sr"]
+[ext_resource type="Resource" uid="uid://cbmwrakedc5fp" path="res://Assets/Pets/pets_pickable.tres" id="5_4monu"]
+[ext_resource type="Resource" uid="uid://clx506oiai1so" path="res://Assets/Blasters/blaster_resource.tres" id="6_sw7j2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ftnvk"]
+font = ExtResource("1_ayau6")
+font_size = 48
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yqy1w"]
+size = Vector3(20, 20, 20)
+
+[node name="EndGame" type="Node3D" unique_id=1902289847]
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1645763428]
+
+[node name="Control" type="Control" parent="HUD" unique_id=2000438524]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="HUD/Control" unique_id=2089991437]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -136.0
+offset_top = -360.0
+offset_right = 143.0
+offset_bottom = -301.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "The End"
+label_settings = SubResource("LabelSettings_ftnvk")
+horizontal_alignment = 1
+
+[node name="Spawner" type="Node3D" parent="." unique_id=88663242]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
+script = ExtResource("2_q0lv0")
+PickableBaseScene = ExtResource("3_5gnbw")
+Resources = Array[Object]([ExtResource("4_641sr"), ExtResource("5_4monu"), ExtResource("6_sw7j2")])
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1701790412]
+transform = Transform3D(0.8957282, -0.20631166, 0.39383572, 0, 0.88581604, 0.4640366, -0.44460216, -0.41565064, 0.7934504, 2.4998727, 2.9454727, 5.036427)
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1344745551]
+collision_layer = 0
+collision_mask = 4
+gravity_space_override = 3
+gravity = 0.5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=505374848]
+shape = SubResource("BoxShape3D_yqy1w")
+
+[node name="Timer" type="Timer" parent="." unique_id=1197046798]
+wait_time = 0.2
+autostart = true

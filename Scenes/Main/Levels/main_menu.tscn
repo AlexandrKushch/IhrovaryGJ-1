@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://bdoar7tknnl2p"]
+
+[ext_resource type="Script" uid="uid://d3jufqkss1r58" path="res://Scenes/Main/Levels/MainMenu.cs" id="1_08jg4"]
+[ext_resource type="FontFile" uid="uid://l66txk5l2hp0" path="res://Fonts/DynaPuff-VariableFont_wdth,wght.ttf" id="1_asgev"]
+[ext_resource type="Script" uid="uid://bh5t47fr224v4" path="res://Scenes/Main/Levels/Spawner.cs" id="2_y3hs5"]
+[ext_resource type="Resource" uid="uid://bpilagi8j2na1" path="res://Assets/Cars/cars_pickable.tres" id="3_65ywh"]
+[ext_resource type="PackedScene" uid="uid://i5ypf2x1bxdu" path="res://Scenes/PickableObjects/pickable_base.tscn" id="3_geuo3"]
+[ext_resource type="Resource" uid="uid://cbmwrakedc5fp" path="res://Assets/Pets/pets_pickable.tres" id="4_geuo3"]
+[ext_resource type="Resource" uid="uid://clx506oiai1so" path="res://Assets/Blasters/blaster_resource.tres" id="5_08jg4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xrivr"]
+font = ExtResource("1_asgev")
+font_size = 48
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xrivr"]
+size = Vector3(20, 20, 20)
+
+[node name="MainMenu" type="Node3D" unique_id=1130976643]
+script = ExtResource("1_08jg4")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=822284660]
+
+[node name="Control" type="Control" parent="HUD" unique_id=51380880]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="HUD/Control" unique_id=971111185]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -136.0
+offset_top = -136.0
+offset_right = 143.0
+offset_bottom = -77.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Press Enter"
+label_settings = SubResource("LabelSettings_xrivr")
+
+[node name="Spawner" type="Node3D" parent="." unique_id=548472222]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
+script = ExtResource("2_y3hs5")
+PickableBaseScene = ExtResource("3_geuo3")
+Resources = Array[Object]([ExtResource("3_65ywh"), ExtResource("4_geuo3"), ExtResource("5_08jg4")])
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=625736984]
+transform = Transform3D(0.8957282, -0.20631166, 0.39383572, 0, 0.88581604, 0.4640366, -0.44460216, -0.41565064, 0.7934504, 2.4998727, 2.9454727, 5.036427)
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1314781871]
+collision_layer = 0
+collision_mask = 4
+gravity_space_override = 3
+gravity = 0.5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=452336080]
+shape = SubResource("BoxShape3D_xrivr")
+
+[node name="Timer" type="Timer" parent="." unique_id=2114684768]
+wait_time = 0.2
+autostart = true
+
+[connection signal="timeout" from="Timer" to="Spawner" method="SpawnRandom"]
