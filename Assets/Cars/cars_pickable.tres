@@ -24,6 +24,6 @@
 script = ExtResource("1_7vqds")
 Items = Array[PackedScene]([ExtResource("1_pp062"), ExtResource("3_7ytr8"), ExtResource("4_7citv"), ExtResource("5_q7e71"), ExtResource("6_vqa10"), ExtResource("7_2mfw8"), ExtResource("8_hr2yk"), ExtResource("11_xfwnq"), ExtResource("12_56x22"), ExtResource("13_5ev5i"), ExtResource("14_enpdu"), ExtResource("15_mfasi"), ExtResource("16_x6jkm"), ExtResource("17_tcx8q"), ExtResource("18_a34kb"), ExtResource("19_1v53q"), ExtResource("20_mjdyr"), ExtResource("21_f3fml")])
 GenerateCollisionShape = true
-Scale = 0.5
+Scale = 0.65
 UseOffset = true
 metadata/_custom_type_script = "uid://cmckoveyut7dy"

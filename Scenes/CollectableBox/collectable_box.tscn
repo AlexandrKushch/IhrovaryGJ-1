@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://bgl4fdrh7ha3o" path="res://Scenes/CollectableBox/CollectableBox.cs" id="1_o5fxs"]
 [ext_resource type="Script" uid="uid://b2ecds3xves7h" path="res://Scenes/Player/Fork/AreaController.cs" id="2_awnsb"]
 [ext_resource type="Texture2D" uid="uid://gfudhvsax6bh" path="res://Assets/cardbord_colormap.png" id="2_o5fxs"]
+[ext_resource type="FontFile" uid="uid://l66txk5l2hp0" path="res://Fonts/DynaPuff-VariableFont_wdth,wght.ttf" id="4_q7tys"]
+[ext_resource type="AudioStream" uid="uid://uk1qqa1agp40" path="res://Sounds/collect.mp3" id="5_ft2yv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yia0b"]
 resource_name = "Material.001"
@@ -160,15 +162,16 @@ size = Vector3(1.6259766, 1.126831, 1.6132813)
 [sub_resource type="BoxShape3D" id="BoxShape3D_xrivr"]
 size = Vector3(1.40625, 1.7697754, 1.3701172)
 
-[node name="CollectableBox" type="StaticBody3D" unique_id=1123833769]
+[node name="CollectableBox" type="StaticBody3D" unique_id=1123833769 node_paths=PackedStringArray("Counter")]
 collision_mask = 7
 script = ExtResource("1_o5fxs")
+Counter = NodePath("UI/Counter")
 
-[node name="cardbord" type="Node3D" parent="." unique_id=847791602]
+[node name="Visual" type="Node3D" parent="." unique_id=847791602]
 
-[node name="Armature" type="Node3D" parent="cardbord" unique_id=1834260483]
+[node name="Armature" type="Node3D" parent="Visual" unique_id=1834260483]
 
-[node name="Skeleton3D" type="Skeleton3D" parent="cardbord/Armature" unique_id=1024677251]
+[node name="Skeleton3D" type="Skeleton3D" parent="Visual/Armature" unique_id=1024677251]
 bones/0/name = "root"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
@@ -212,12 +215,12 @@ bones/5/position = Vector3(0, 0, 0)
 bones/5/rotation = Quaternion(-0.70710677, 0, 0, 0.70710677)
 bones/5/scale = Vector3(1, 1, 1)
 
-[node name="Plane" type="MeshInstance3D" parent="cardbord/Armature/Skeleton3D" unique_id=1451040394]
+[node name="Plane" type="MeshInstance3D" parent="Visual/Armature/Skeleton3D" unique_id=1451040394]
 mesh = SubResource("ArrayMesh_pjo7j")
 skin = SubResource("Skin_04ik0")
 skeleton = NodePath("..")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="cardbord" unique_id=1635643046]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Visual" unique_id=1635643046]
 libraries/ = SubResource("AnimationLibrary_jpxh3")
 autoplay = &"open"
 
@@ -236,3 +239,29 @@ shape = SubResource("BoxShape3D_xrivr")
 
 [node name="SnapToMarker" type="Marker3D" parent="." unique_id=776989380]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="UI" type="Node3D" parent="." unique_id=1061532446]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8523917, 0)
+
+[node name="Label3D" type="Label3D" parent="UI" unique_id=680725766]
+offset = Vector2(0, 100)
+billboard = 1
+double_sided = false
+texture_filter = 1
+text = "Toys"
+font = ExtResource("4_q7tys")
+font_size = 100
+
+[node name="Counter" type="Label3D" parent="UI" unique_id=1130232261]
+billboard = 1
+double_sided = false
+texture_filter = 1
+text = "
+0/10"
+font = ExtResource("4_q7tys")
+font_size = 100
+
+[node name="CollectAudio" type="AudioStreamPlayer" parent="." unique_id=51134539]
+stream = ExtResource("5_ft2yv")
+volume_db = -4.0
+bus = &"SFX"

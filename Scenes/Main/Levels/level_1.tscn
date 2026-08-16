@@ -1,10 +1,15 @@
 [gd_scene format=3 uid="uid://c8v6bwbjgfgxi"]
 
 [ext_resource type="Material" uid="uid://od546mhpih1c" path="res://Assets/GridTextures/m_dark.tres" id="1_58kxn"]
+[ext_resource type="Script" uid="uid://b7vmcmwt5g6ra" path="res://Scenes/Main/Levels/Level1.cs" id="1_v2pdd"]
 [ext_resource type="PackedScene" uid="uid://i5ypf2x1bxdu" path="res://Scenes/PickableObjects/pickable_base.tscn" id="2_v2pdd"]
 [ext_resource type="Resource" uid="uid://cbmwrakedc5fp" path="res://Assets/Pets/pets_pickable.tres" id="3_offyj"]
+[ext_resource type="PackedScene" uid="uid://dn5i6hcvvm080" path="res://Scenes/Player/player.tscn" id="5_offyj"]
+[ext_resource type="PackedScene" uid="uid://b20nb1qg4guw" path="res://Scenes/Camera/camera_follower.tscn" id="6_pm74c"]
 
-[node name="Level1" type="Node3D" unique_id=1693286197]
+[node name="Level1" type="Node3D" unique_id=1693286197 node_paths=PackedStringArray("Objects")]
+script = ExtResource("1_v2pdd")
+Objects = NodePath("InteractableObjects")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1746625108]
 use_collision = true
@@ -64,3 +69,13 @@ Resource = ExtResource("3_offyj")
 [node name="PickableBase10" parent="InteractableObjects" unique_id=1934351235 instance=ExtResource("2_v2pdd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4689722, 5.3491006, -3.4947057)
 Resource = ExtResource("3_offyj")
+
+[node name="Player" parent="." unique_id=1090890824 instance=ExtResource("5_offyj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3089986, 0.39533138, 3.1535149)
+
+[node name="CameraFollower" parent="." unique_id=1656799676 node_paths=PackedStringArray("Follow") instance=ExtResource("6_pm74c")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
+Follow = NodePath("../Player")
+
+[node name="Camera3D" type="Camera3D" parent="CameraFollower" unique_id=1511310004]
+transform = Transform3D(0.9999619, 0.005609308, -0.0066849133, 0, 0.7660444, 0.6427875, 0.008726535, -0.642763, 0.7660152, 2.2351742e-08, 8, 9.999997)

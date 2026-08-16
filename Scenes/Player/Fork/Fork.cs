@@ -15,12 +15,16 @@ public partial class Fork : Node3D
 
     private AreaController SelectItemArea;
     private Area3D MinHeightShapeArea;
+    private AudioStreamPlayer PickUpAudio;
+    private AudioStreamPlayer DropDownAudio;
 
     public override void _Ready()
     {
         MovablePart = GetNode<AnimatableBody3D>(nameof(MovablePart));
-        SelectItemArea = GetNode<AreaController>(nameof(SelectItemArea));
+        SelectItemArea = MovablePart.GetNode<AreaController>(nameof(SelectItemArea));
         MinHeightShapeArea = MovablePart.GetNode<Area3D>(nameof(MinHeightShapeArea));
+        PickUpAudio = GetNode<AudioStreamPlayer>(nameof(PickUpAudio));
+        DropDownAudio = GetNode<AudioStreamPlayer>(nameof(DropDownAudio));
     }
 
     public override void _PhysicsProcess(double delta)
@@ -73,6 +77,7 @@ public partial class Fork : Node3D
 
     private void HandlePickUp()
     {
+        if (_carriage != null) return;
         if (SelectItemArea.Bodies.Count == 0) return;
 
         var direction = Input.GetAxis("fork_down", "fork_up");
@@ -87,6 +92,7 @@ public partial class Fork : Node3D
         {
             JointHelper.Instance.Join(MovablePart, closestItem, closestItem.GlobalPosition.DistanceTo(collisionPoint));
             _carriage = closestItem;
+            PickUpAudio.Play();
         }
     }
 
@@ -97,6 +103,10 @@ public partial class Fork : Node3D
         if (Mathf.IsEqualApprox(MovablePart.Position.Y, _minY, 0.02f))
         {
             JointHelper.Instance.Unjoin(MovablePart);
+            if (IsInstanceValid(_carriage))
+            {
+                DropDownAudio.Play();
+            }
             _carriage = null;
         }
     }

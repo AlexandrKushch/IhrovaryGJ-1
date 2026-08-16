@@ -3,6 +3,15 @@
 [ext_resource type="Script" uid="uid://bbrmanam3icw4" path="res://Scenes/PickableObjects/PickableBase.cs" id="1_v4cym"]
 [ext_resource type="Script" uid="uid://bc1v61uxpc2p7" path="res://Scenes/PickableObjects/PickableVisual.cs" id="2_xq4ig"]
 [ext_resource type="Material" uid="uid://cjtloi8qp5642" path="res://Materials/m_outline.tres" id="4_5vt8o"]
+[ext_resource type="AudioStream" uid="uid://3n22tlya4y3x" path="res://Sounds/UI/rollover6.ogg" id="4_xq4ig"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xrivr"]
+random_pitch = 1.0594631
+random_volume_offset_db = 1.0
+streams_count = 1
+stream_0/stream = ExtResource("4_xq4ig")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xrivr"]
 
 [node name="PickableBase" type="RigidBody3D" unique_id=866102197]
 collision_layer = 4
@@ -12,3 +21,17 @@ script = ExtResource("1_v4cym")
 [node name="Visual" type="Node3D" parent="." unique_id=1019451233]
 script = ExtResource("2_xq4ig")
 _outlineShader = ExtResource("4_5vt8o")
+
+[node name="HitAudio" type="AudioStreamPlayer" parent="." unique_id=415847334]
+stream = SubResource("AudioStreamRandomizer_xrivr")
+volume_db = -7.5
+
+[node name="HitArea" type="Area3D" parent="." unique_id=1188953553]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitArea" unique_id=625382939]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
+shape = SubResource("BoxShape3D_xrivr")
+
+[connection signal="body_entered" from="HitArea" to="." method="OnBodyEntered"]

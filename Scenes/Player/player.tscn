@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://b44y7o4p3hf07" path="res://Scenes/Player/PlayerVisual.cs" id="2_a3d8c"]
 [ext_resource type="PackedScene" uid="uid://m8gmbme0cdna" path="res://Scenes/Player/Fork/fork.tscn" id="3_xpcdj"]
 [ext_resource type="Script" uid="uid://cn7jy0d5ku0o2" path="res://Scenes/Player/ForkCollisionShapeFollower.cs" id="4_mtuoh"]
+[ext_resource type="AudioStream" uid="uid://5tfjb4dxan86" path="res://Sounds/electric_engine.mp3" id="5_htcer"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_86hc0"]
 resource_name = "Material.002"
@@ -443,3 +444,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.026188493, -1.2803258)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1407538, -1.8726511)
 shape = SubResource("BoxShape3D_xrivr")
 script = ExtResource("4_mtuoh")
+
+[node name="MovementAudio" type="AudioStreamPlayer" parent="." unique_id=1196650365]
+stream = ExtResource("5_htcer")
+volume_db = -40.0
+pitch_scale = 1.98
+bus = &"SFX"

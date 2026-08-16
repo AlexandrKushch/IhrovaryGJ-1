@@ -3,6 +3,8 @@ using System.Linq;
 
 public partial class PickableBase : RigidBody3D
 {
+    private AudioStreamPlayer HitAudio;
+
     public PickableVisual Visual { get; set; }
 
     [Export]
@@ -11,11 +13,12 @@ public partial class PickableBase : RigidBody3D
     public override void _Ready()
     {
         Visual = GetNode<PickableVisual>(nameof(Visual));
+        HitAudio = GetNode<AudioStreamPlayer>(nameof(HitAudio));
 
         if (Resource.GenerateCollisionShape)
         {
             var mesh = Visual.Meshes.MaxBy(x => x.GetAabb().Size.Length());
-        
+
             var size = mesh.GetAabb().Size * Resource.Scale;
 
             AddChild(new CollisionShape3D
@@ -42,5 +45,10 @@ public partial class PickableBase : RigidBody3D
         }
 
         Visual.Scale = Vector3.One * Resource.Scale;
+    }
+
+    private void OnBodyEntered(Node3D body)
+    {
+        HitAudio.Play();
     }
 }

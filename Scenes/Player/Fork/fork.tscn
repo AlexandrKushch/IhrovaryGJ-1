@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://ctdwkbfytpb33" path="res://Scenes/Player/Fork/Fork.cs" id="1_lljwn"]
 [ext_resource type="Script" uid="uid://b2ecds3xves7h" path="res://Scenes/Player/Fork/AreaController.cs" id="2_1bbma"]
+[ext_resource type="AudioStream" uid="uid://k2w73rt0a6yg" path="res://Sounds/UI/click1.ogg" id="3_5jykq"]
+[ext_resource type="AudioStream" uid="uid://sotfmvlef76" path="res://Sounds/UI/click2.ogg" id="4_ncsqy"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_86hc0"]
 resource_name = "Material.002"
@@ -135,6 +137,9 @@ shadow_mesh = SubResource("ArrayMesh_txbig")
 [sub_resource type="BoxShape3D" id="BoxShape3D_xrivr"]
 size = Vector3(1, 2, 0.21875)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_b1lj4"]
+size = Vector3(2, 2, 2)
+
 [sub_resource type="ArrayMesh" id="ArrayMesh_nhpth"]
 _surfaces = [{
 "aabb": AABB(-0.01692381, -0.041821092, -0.028532116, 0.020371404, 0.027521238, 0.056559473),
@@ -175,9 +180,6 @@ size = Vector3(1, 0.22, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_wi6ju"]
 size = Vector3(1, 0.07800293, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_b1lj4"]
-size = Vector3(2, 2, 2)
-
 [node name="Fork" type="Node3D" unique_id=332197759]
 script = ExtResource("1_lljwn")
 
@@ -212,6 +214,16 @@ collision_layer = 2
 collision_mask = 5
 sync_to_physics = false
 
+[node name="SelectItemArea" type="Area3D" parent="MovablePart" unique_id=1115841942]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10200393, 0.57777286)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("2_1bbma")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MovablePart/SelectItemArea" unique_id=241096953]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
+shape = SubResource("BoxShape3D_b1lj4")
+
 [node name="Visual" type="Node3D" parent="MovablePart" unique_id=459473030]
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="MovablePart/Visual" unique_id=1953653659]
@@ -242,11 +254,12 @@ collision_mask = 5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0038452148, -0.57277143)
 shape = SubResource("BoxShape3D_wi6ju")
 
-[node name="SelectItemArea" type="Area3D" parent="." unique_id=1115841942]
-collision_layer = 0
-collision_mask = 4
-script = ExtResource("2_1bbma")
+[node name="PickUpAudio" type="AudioStreamPlayer" parent="." unique_id=1186819407]
+stream = ExtResource("3_5jykq")
+pitch_scale = 0.51
+bus = &"SFX"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SelectItemArea" unique_id=241096953]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
-shape = SubResource("BoxShape3D_b1lj4")
+[node name="DropDownAudio" type="AudioStreamPlayer" parent="." unique_id=786043664]
+stream = ExtResource("4_ncsqy")
+pitch_scale = 0.51
+bus = &"SFX"

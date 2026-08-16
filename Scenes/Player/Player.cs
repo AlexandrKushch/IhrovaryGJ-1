@@ -9,6 +9,7 @@ public partial class Player : CharacterBody3D
 	public const float JumpVelocity = 4.5f;
 
 	private PlayerVisual Visual;
+	private AudioStreamPlayer MovementAudio;
 
 	private Fork Fork;
 
@@ -21,6 +22,7 @@ public partial class Player : CharacterBody3D
 	public override void _Ready()
 	{
 		Visual = GetNode<PlayerVisual>(nameof(Visual));
+		MovementAudio = GetNode<AudioStreamPlayer>(nameof(MovementAudio));
 		Fork = GetNode<Fork>(nameof(Fork));
 
 		GetNode<ForkCollisionShapeFollower>("ForkCollisionShape").Follow = Fork.MovablePart;
@@ -51,11 +53,19 @@ public partial class Player : CharacterBody3D
             velocity = (-GlobalBasis.Z * accelerationInput).Normalized() * Speed * delta;
 
 			Visual.SpinWheels(accelerationInput, delta);
+
+			if (!MovementAudio.Playing)
+			{
+				MovementAudio.PitchScale = accelerationInput > 0 ? 2f : 1.5f;
+				MovementAudio.Play();
+			}
         }
         else
         {
             float weight = 1f - Mathf.Exp(-Deaccalaration * (float)delta);
             velocity = velocity.Lerp(new Vector3(0, velocity.Y, 0), weight);
+
+			MovementAudio.Stop();
         }
 	}
 
