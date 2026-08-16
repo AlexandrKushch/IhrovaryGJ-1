@@ -14,4 +14,10 @@ public partial class PrickableResource : Resource
 
     [Export]
     public bool UseOffset { get; set; } = false;
+
+    [Export]
+    public float OffsetY { get; set; }
+    
+    [Export]
+    public PickableType Type { get; set; }
 }

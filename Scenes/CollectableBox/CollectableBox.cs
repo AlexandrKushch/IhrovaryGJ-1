@@ -1,4 +1,5 @@
 using Godot;
+using System;
 using System.Linq;
 
 public partial class CollectableBox : StaticBody3D
@@ -13,7 +14,13 @@ public partial class CollectableBox : StaticBody3D
     private AudioStreamPlayer CollectAudio;
 
     [Export]
+    private PickableType Type;
+
+    [Export]
     private Node3D Objects;
+
+    [Export]
+    private Label3D Label;
 
     [Export]
     private Label3D Counter;
@@ -28,17 +35,23 @@ public partial class CollectableBox : StaticBody3D
         SnapToMarker = GetNode<Marker3D>(nameof(SnapToMarker));
         CollectAudio = GetNode<AudioStreamPlayer>(nameof(CollectAudio));
 
-        _maxCountObjects = Objects.FindChildren("*").Where(x => x is PickableBase && x != null).Select(x => x as PickableBase).Count();
-        UpdateLable();
+        CallDeferred(nameof(UpdateLabel));
     }
 
     public override void _Process(double delta)
     {
         if (_collecting || CollectArea.Bodies.Count == 0) return;
-        _collecting = true;
-        CollectAudio.Play();
         
-        var closestItem = CollectArea.Bodies.First();
+        var closestItem = CollectArea.Bodies.FirstOrDefault(x => Type == PickableType.General ? true : x.Resource.Type == Type);
+
+        if (closestItem == null)
+        {
+            return;
+        }
+        
+        _collecting = true;
+
+        CollectAudio.Play();
 
         closestItem.SetProcess(false);
         closestItem.SetPhysicsProcess(false);
@@ -55,7 +68,7 @@ public partial class CollectableBox : StaticBody3D
         itemTween.Finished += () =>
         {
             _currentCount++;
-            UpdateLable();
+            UpdateCounter();
             closestItem.QueueFree();
             _collecting = false;
 
@@ -66,8 +79,30 @@ public partial class CollectableBox : StaticBody3D
         };
     }
 
-    private void UpdateLable()
+    private void UpdateLabel()
+    {
+        var objs = Objects.FindChildren("*").Where(x => x is PickableBase && x != null).Select(x => x as PickableBase);
+        _maxCountObjects = objs.Count(x => Type != PickableType.General ? x.Resource.Type == Type : true);
+        UpdateCounter();
+
+        Label.Text = TypeToString(Type);        
+    }
+
+    private void UpdateCounter()
     {
         Counter.Text = $"{_currentCount}/{_maxCountObjects}";
+    }
+    
+    private string TypeToString(PickableType type)
+    {
+        switch (type)
+        {
+            case PickableType.General: return "Toys";
+            case PickableType.Pets: return "Pets";
+            case PickableType.Cars: return "Cars";
+            case PickableType.Weapons: return "Blasters";
+            case PickableType.Train: return "Trains";
+            default: GD.PushError("Not supported type"); return string.Empty;
+        }
     }
 }

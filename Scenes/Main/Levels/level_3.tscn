@@ -1,0 +1,253 @@
+[gd_scene format=3 uid="uid://bq08d8qlmwm3p"]
+
+[ext_resource type="Script" uid="uid://xun1m8jekvrx" path="res://Scenes/Main/Levels/Level2.cs" id="1_74sjf"]
+[ext_resource type="Material" uid="uid://od546mhpih1c" path="res://Assets/GridTextures/m_dark.tres" id="1_n2u6m"]
+[ext_resource type="PackedScene" uid="uid://fdl6jxvt3c11" path="res://Scenes/CollectableBox/collectable_box.tscn" id="2_74sjf"]
+[ext_resource type="PackedScene" uid="uid://i5ypf2x1bxdu" path="res://Scenes/PickableObjects/pickable_base.tscn" id="3_rnlfp"]
+[ext_resource type="Resource" uid="uid://cbmwrakedc5fp" path="res://Assets/Pets/pets_pickable.tres" id="4_ydxrp"]
+[ext_resource type="Resource" uid="uid://bpilagi8j2na1" path="res://Assets/Cars/cars_pickable.tres" id="5_7505f"]
+[ext_resource type="Resource" uid="uid://clx506oiai1so" path="res://Assets/Blasters/blaster_resource.tres" id="6_tieop"]
+[ext_resource type="PackedScene" uid="uid://dn5i6hcvvm080" path="res://Scenes/Player/player.tscn" id="7_0r35l"]
+[ext_resource type="PackedScene" uid="uid://b20nb1qg4guw" path="res://Scenes/Camera/camera_follower.tscn" id="8_pldt3"]
+[ext_resource type="Resource" uid="uid://ofgxe703qmkq" path="res://Assets/Train/train_pickable.tres" id="8_rnlfp"]
+[ext_resource type="FontFile" uid="uid://l66txk5l2hp0" path="res://Fonts/DynaPuff-VariableFont_wdth,wght.ttf" id="9_h0lfe"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dy53v"]
+size = Vector3(6, 0.001, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tp5vt"]
+size = Vector3(20, 0.001, 20)
+
+[sub_resource type="LabelSettings" id="LabelSettings_m0654"]
+font = ExtResource("9_h0lfe")
+
+[node name="Level3" type="Node3D" unique_id=1908491581 node_paths=PackedStringArray("TaskLabel", "Objects")]
+script = ExtResource("1_74sjf")
+BoxCount = 3
+TaskLabel = NodePath("TaskLayer/Control")
+Objects = NodePath("Objects")
+
+[node name="Borders" type="StaticBody3D" parent="." unique_id=468385749]
+transform = Transform3D(0.905, 0, 0, 0, 0.905, 0, 0, 0, 0.905, 0, 0, 0)
+collision_mask = 7
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Borders" unique_id=544484047]
+transform = Transform3D(-4.371139e-08, 1, 0, 1, 4.371139e-08, -8.742278e-08, -8.742278e-08, -3.821371e-15, -1, -10, 3, 0)
+shape = SubResource("BoxShape3D_dy53v")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Borders" unique_id=541123448]
+transform = Transform3D(0.99999964, 3.9256496e-15, -8.742278e-08, 3.9256496e-15, -0.99999964, 3.821371e-15, -8.742278e-08, -3.821371e-15, -0.99999964, 0, 5.999999, 0)
+shape = SubResource("BoxShape3D_tp5vt")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Borders" unique_id=1122717936]
+transform = Transform3D(1.9106855e-15, -4.371139e-08, -1, -1, -4.371139e-08, 0, -4.371139e-08, 1, -4.371139e-08, 0, 3, -10)
+shape = SubResource("BoxShape3D_dy53v")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Borders" unique_id=295184350]
+transform = Transform3D(1.9106855e-15, -4.371139e-08, -1, -1, -4.371139e-08, 0, -4.371139e-08, 1, -4.371139e-08, 0, 3, 10)
+shape = SubResource("BoxShape3D_dy53v")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Borders" unique_id=547169160]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 10, 3, 0)
+shape = SubResource("BoxShape3D_dy53v")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=468978586]
+use_collision = true
+collision_mask = 15
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1273491583]
+material_override = ExtResource("1_n2u6m")
+size = Vector3(19.068115, 1, 18.296875)
+material = ExtResource("1_n2u6m")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=486197157]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37742233, 0)
+layers = 0
+material_override = ExtResource("1_n2u6m")
+operation = 2
+size = Vector3(18, 1, 17)
+material = ExtResource("1_n2u6m")
+
+[node name="CollectablePets" parent="." unique_id=1123833769 node_paths=PackedStringArray("Objects") instance=ExtResource("2_74sjf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1124287, -0.11837994, -3.1866627)
+Type = 1
+Objects = NodePath("../Objects")
+
+[node name="CollectableCars" parent="." unique_id=339044316 node_paths=PackedStringArray("Objects") instance=ExtResource("2_74sjf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8875713, -0.11837994, -0.18666267)
+Type = 3
+Objects = NodePath("../Objects")
+
+[node name="CollectableBlasters" parent="." unique_id=2019056288 node_paths=PackedStringArray("Objects") instance=ExtResource("2_74sjf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8875713, -0.11837994, 3.8133373)
+Type = 2
+Objects = NodePath("../Objects")
+
+[node name="CollectableTrains" parent="." unique_id=533282036 node_paths=PackedStringArray("Objects") instance=ExtResource("2_74sjf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1124287, -0.11837994, 6.6104164)
+Type = 4
+Objects = NodePath("../Objects")
+
+[node name="Objects" type="Node3D" parent="." unique_id=1389602177]
+
+[node name="Pets" type="Node3D" parent="Objects" unique_id=522163977]
+
+[node name="PickableBase" parent="Objects/Pets" unique_id=866102197 instance=ExtResource("3_rnlfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3987882, 0.84074163, 0)
+Resource = ExtResource("4_ydxrp")
+
+[node name="PickableBase2" parent="Objects/Pets" unique_id=917973702 instance=ExtResource("3_rnlfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3987882, 0.84074163, 3.1988835)
+Resource = ExtResource("4_ydxrp")
+
+[node name="PickableBase3" parent="Objects/Pets" unique_id=319137035 instance=ExtResource("3_rnlfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3987877, 2.6130612, 1.672152)
+Resource = ExtResource("4_ydxrp")
+
+[node name="PickableBase4" parent="Objects/Pets" unique_id=1580039860 instance=ExtResource("3_rnlfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6641438, 2.613061, -5.1027584)
+Resource = ExtResource("4_ydxrp")
+
+[node name="PickableBase5" parent="Objects/Pets" unique_id=261021861 instance=ExtResource("3_rnlfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.041869, 2.613061, -4.029914)
+Resource = ExtResource("4_ydxrp")
+
+[node name="PickableBase6" parent="Objects/Pets" unique_id=998188573 instance=ExtResource("3_rnlfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7507331, 2.613061, -0.60600495)
+Resource = ExtResource("4_ydxrp")
+
+[node name="PickableBase7" parent="Objects/Pets" unique_id=1252599711 instance=ExtResource("3_rnlfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7507331, 2.613061, -13.606005)
+Resource = ExtResource("4_ydxrp")
+
+[node name="Cars" type="Node3D" parent="Objects" unique_id=1246700028]
+
+[node name="PickableBase" parent="Objects/Cars" unique_id=1314377845 instance=ExtResource("3_rnlfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2120924, 0.84074163, 3.6332808)
+Resource = ExtResource("5_7505f")
+
+[node name="PickableBase2" parent="Objects/Cars" unique_id=986292030 instance=ExtResource("3_rnlfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2120924, 0.84074163, 4.6332808)
+Resource = ExtResource("5_7505f")
+
+[node name="PickableBase3" parent="Objects/Cars" unique_id=1535064349 instance=ExtResource("3_rnlfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7879076, 1.8407416, 5.6332808)
+Resource = ExtResource("5_7505f")
+
+[node name="PickableBase4" parent="Objects/Cars" unique_id=113071663 instance=ExtResource("3_rnlfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7853575, 2.6973495, 6.2405844)
+Resource = ExtResource("5_7505f")
+
+[node name="PickableBase5" parent="Objects/Cars" unique_id=883048050 instance=ExtResource("3_rnlfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2362947, 3.155695, -3.4014325)
+Resource = ExtResource("5_7505f")
+
+[node name="PickableBase6" parent="Objects/Cars" unique_id=1916728437 instance=ExtResource("3_rnlfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2855916, 2.4350986, -3.4014325)
+Resource = ExtResource("5_7505f")
+
+[node name="PickableBase7" parent="Objects/Cars" unique_id=689092621 instance=ExtResource("3_rnlfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2855916, 4.1437993, 5.304374)
+Resource = ExtResource("5_7505f")
+
+[node name="PickableBase8" parent="Objects/Cars" unique_id=955772597 instance=ExtResource("3_rnlfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1594234, 4.1437993, 5.304374)
+Resource = ExtResource("5_7505f")
+
+[node name="Weapons" type="Node3D" parent="Objects" unique_id=15132397]
+
+[node name="PickableBase" parent="Objects/Weapons" unique_id=1226178209 instance=ExtResource("3_rnlfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3987882, 1.5384288, 2.2600064)
+Resource = ExtResource("6_tieop")
+
+[node name="PickableBase2" parent="Objects/Weapons" unique_id=54640437 instance=ExtResource("3_rnlfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0024974, 1.5384288, 5.2313786)
+Resource = ExtResource("6_tieop")
+
+[node name="PickableBase3" parent="Objects/Weapons" unique_id=782651572 instance=ExtResource("3_rnlfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.17702, 1.5384288, -0.3304248)
+Resource = ExtResource("6_tieop")
+
+[node name="PickableBase4" parent="Objects/Weapons" unique_id=216744608 instance=ExtResource("3_rnlfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.24995804, 1.5384288, -3.7059135)
+Resource = ExtResource("6_tieop")
+
+[node name="PickableBase5" parent="Objects/Weapons" unique_id=1579395665 instance=ExtResource("3_rnlfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.24995899, 2.765627, 2.4404302)
+Resource = ExtResource("6_tieop")
+
+[node name="PickableBase6" parent="Objects/Weapons" unique_id=299157222 instance=ExtResource("3_rnlfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.4048405, 2.765627, 2.4404302)
+Resource = ExtResource("6_tieop")
+
+[node name="PickableBase7" parent="Objects/Weapons" unique_id=366725964 instance=ExtResource("3_rnlfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.384266, 2.765627, 4.872296)
+Resource = ExtResource("6_tieop")
+
+[node name="PickableBase8" parent="Objects/Weapons" unique_id=999441279 instance=ExtResource("3_rnlfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21098232, 2.765627, 4.872296)
+Resource = ExtResource("6_tieop")
+
+[node name="Trains" type="Node3D" parent="Objects" unique_id=535947554]
+
+[node name="PickableBase" parent="Objects/Trains" unique_id=959245970 instance=ExtResource("3_rnlfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.08946967, 0.84074163, 4.8088193)
+Resource = ExtResource("8_rnlfp")
+
+[node name="PickableBase2" parent="Objects/Trains" unique_id=1604105760 instance=ExtResource("3_rnlfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2074139, 0.84074163, 2.2034574)
+Resource = ExtResource("8_rnlfp")
+
+[node name="PickableBase3" parent="Objects/Trains" unique_id=597592952 instance=ExtResource("3_rnlfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7789116, 2.6130612, -3.0256395)
+Resource = ExtResource("8_rnlfp")
+
+[node name="PickableBase4" parent="Objects/Trains" unique_id=2018677079 instance=ExtResource("3_rnlfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8453093, 2.613061, 4.8411846)
+Resource = ExtResource("8_rnlfp")
+
+[node name="PickableBase5" parent="Objects/Trains" unique_id=1560137853 instance=ExtResource("3_rnlfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.308264, 2.613061, 6.5497446)
+Resource = ExtResource("8_rnlfp")
+
+[node name="PickableBase6" parent="Objects/Trains" unique_id=71781413 instance=ExtResource("3_rnlfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9930933, 2.613061, 0.93052554)
+Resource = ExtResource("8_rnlfp")
+
+[node name="PickableBase7" parent="Objects/Trains" unique_id=1775442803 instance=ExtResource("3_rnlfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.70041, 2.613061, -5.023822)
+Resource = ExtResource("8_rnlfp")
+
+[node name="Player" parent="." unique_id=1090890824 instance=ExtResource("7_0r35l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3089986, 0.39533138, 3.1535149)
+
+[node name="CameraFollower" parent="." unique_id=1656799676 node_paths=PackedStringArray("Follow") instance=ExtResource("8_pldt3")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
+Follow = NodePath("../Player")
+
+[node name="Camera3D" type="Camera3D" parent="CameraFollower" unique_id=42790090]
+transform = Transform3D(0.9999619, 0.005609308, -0.0066849133, 0, 0.7660444, 0.6427875, 0.008726535, -0.642763, 0.7660152, 2.2351742e-08, 8, 9.999997)
+
+[node name="TaskLayer" type="CanvasLayer" parent="." unique_id=191649496]
+
+[node name="Control" type="Control" parent="TaskLayer" unique_id=1586441724]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="TaskLayer/Control" unique_id=620375113]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 174.0
+offset_bottom = 43.0
+text = "Sort Toys In proper boxes"
+label_settings = SubResource("LabelSettings_m0654")
+
+[connection signal="OnFull" from="CollectablePets" to="." method="OnBoxComplete"]
+[connection signal="OnFull" from="CollectableCars" to="." method="OnBoxComplete"]
+[connection signal="OnFull" from="CollectableBlasters" to="." method="OnBoxComplete"]
+[connection signal="OnFull" from="CollectableTrains" to="." method="OnBoxComplete"]

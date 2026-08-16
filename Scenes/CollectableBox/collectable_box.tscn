@@ -162,9 +162,10 @@ size = Vector3(1.6259766, 1.126831, 1.6132813)
 [sub_resource type="BoxShape3D" id="BoxShape3D_xrivr"]
 size = Vector3(1.40625, 1.7697754, 1.3701172)
 
-[node name="CollectableBox" type="StaticBody3D" unique_id=1123833769 node_paths=PackedStringArray("Counter")]
+[node name="CollectableBox" type="StaticBody3D" unique_id=1123833769 node_paths=PackedStringArray("Label", "Counter")]
 collision_mask = 7
 script = ExtResource("1_o5fxs")
+Label = NodePath("UI/Label3D")
 Counter = NodePath("UI/Counter")
 
 [node name="Visual" type="Node3D" parent="." unique_id=847791602]

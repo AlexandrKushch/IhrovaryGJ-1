@@ -23,7 +23,7 @@ public partial class PickableBase : RigidBody3D
 
             AddChild(new CollisionShape3D
             {
-                Position = Resource.UseOffset ? mesh.Position + Vector3.Up * size.Y * 0.2f : mesh.Position,
+                Position = Resource.UseOffset ? mesh.Position + Vector3.Up * size.Y * Resource.OffsetY : mesh.Position,
                 Shape = new BoxShape3D
                 {
                     Size = size
@@ -46,6 +46,11 @@ public partial class PickableBase : RigidBody3D
 
         Visual.Scale = Vector3.One * Resource.Scale;
     }
+    
+	public void PushBackFrom(Vector3 direction)
+	{
+        ApplyImpulse(direction * 10);
+	}
 
     private void OnBodyEntered(Node3D body)
     {

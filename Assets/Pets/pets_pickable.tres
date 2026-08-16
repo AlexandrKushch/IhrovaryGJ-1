@@ -29,4 +29,5 @@
 [resource]
 script = ExtResource("1_n7m28")
 Items = Array[PackedScene]([ExtResource("1_225lo"), ExtResource("2_j0nfi"), ExtResource("3_bobep"), ExtResource("4_dqrd4"), ExtResource("5_oxlyo"), ExtResource("6_abrmt"), ExtResource("7_r40i6"), ExtResource("8_eu2di"), ExtResource("9_l67fw"), ExtResource("10_mjcof"), ExtResource("11_184yu"), ExtResource("12_7ktw7"), ExtResource("13_4yvsp"), ExtResource("14_2gyul"), ExtResource("15_847cv"), ExtResource("16_yp7ag"), ExtResource("17_efntj"), ExtResource("18_733d0"), ExtResource("19_mdfmj"), ExtResource("20_mn6hn"), ExtResource("21_f2wnx"), ExtResource("22_gh0gq"), ExtResource("23_em18l"), ExtResource("24_1cfvg")])
+Type = 1
 metadata/_custom_type_script = "uid://cmckoveyut7dy"

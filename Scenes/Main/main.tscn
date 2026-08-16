@@ -10,8 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://c8v6bwbjgfgxi" path="res://Scenes/Main/Levels/level_1.tscn" id="6_y3v7k"]
 [ext_resource type="AudioStream" uid="uid://dsr7vk0av2jb6" path="res://Sounds/Ambient/ambient3.mp3" id="7_xlvfx"]
 [ext_resource type="PackedScene" uid="uid://jk5heh0e81as" path="res://Scenes/Main/Levels/end_game.tscn" id="9_4e4y2"]
+[ext_resource type="PackedScene" uid="uid://bq08d8qlmwm3p" path="res://Scenes/Main/Levels/level_3.tscn" id="9_6t3k2"]
 [ext_resource type="Script" uid="uid://bl2rkm4qgfhnw" path="res://Scenes/Main/PauseMenuControl.cs" id="10_hfg1r"]
 [ext_resource type="FontFile" uid="uid://l66txk5l2hp0" path="res://Fonts/DynaPuff-VariableFont_wdth,wght.ttf" id="10_imbg2"]
+[ext_resource type="PackedScene" uid="uid://b5l6xk215llnr" path="res://Scenes/Main/level_transition.tscn" id="11_vk4q2"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_geuo3"]
 panorama = ExtResource("4_hryqi")
@@ -74,7 +76,8 @@ texture = SubResource("GradientTexture2D_xrivr")
 
 [node name="LevelManager" type="Node3D" parent="." unique_id=72750435]
 script = ExtResource("5_xlvfx")
-Levels = Array[PackedScene]([ExtResource("5_y3v7k"), ExtResource("6_y3v7k"), ExtResource("2_xlvfx"), ExtResource("9_4e4y2")])
+Levels = Array[PackedScene]([ExtResource("5_y3v7k"), ExtResource("6_y3v7k"), ExtResource("2_xlvfx"), ExtResource("9_6t3k2"), ExtResource("9_4e4y2")])
+Transition = ExtResource("11_vk4q2")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=801169552]
 stream = ExtResource("7_xlvfx")

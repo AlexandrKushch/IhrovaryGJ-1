@@ -10,6 +10,9 @@ public partial class LevelManager : Node3D
     [Export]
     public PackedScene[] Levels;
 
+    [Export]
+    private PackedScene Transition;
+
     public override void _Ready()
     {
         if (!IsInstanceValid(Instance))
@@ -17,7 +20,7 @@ public partial class LevelManager : Node3D
             Instance = this;
         }
 
-        SwitchToLevel(0);
+        SwitchToLevel(CurrentLevelIndex);
     }
 
     public void SwitchToLevel(int index)
@@ -33,6 +36,20 @@ public partial class LevelManager : Node3D
             return;
         }
 
+        if (index != 0)
+        {
+            var transition = Transition.Instantiate();
+            transition.TreeExited += () => ChangeLevel(index);
+            AddChild(transition);
+        }
+        else
+        {
+            ChangeLevel(index);
+        }
+    }
+
+    private void ChangeLevel(int index)
+    {
         CurrentLevelIndex = index;
         _currentLevel = Levels[CurrentLevelIndex].Instantiate<Node3D>();
         AddChild(_currentLevel);

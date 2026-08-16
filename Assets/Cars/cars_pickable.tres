@@ -26,4 +26,6 @@ Items = Array[PackedScene]([ExtResource("1_pp062"), ExtResource("3_7ytr8"), ExtR
 GenerateCollisionShape = true
 Scale = 0.65
 UseOffset = true
+OffsetY = 0.2
+Type = 3
 metadata/_custom_type_script = "uid://cmckoveyut7dy"
