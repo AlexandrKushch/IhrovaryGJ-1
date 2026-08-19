@@ -2,7 +2,7 @@ using Godot;
 
 public partial class LevelManager : Node3D
 {
-    public int CurrentLevelIndex { get; private set; } = 0;
+    public int CurrentLevelIndex { get; private set; } = 1;
     private Node3D _currentLevel;
 
     public static LevelManager Instance { get; private set; }

@@ -4,6 +4,9 @@ using System.Linq;
 
 public partial class PickableVisual : Node3D
 {
+    private bool _selected = false;
+    private bool _pickable = false;
+
     public MeshInstance3D[] Meshes { get; private set; }
 
     [Export]
@@ -26,9 +29,13 @@ public partial class PickableVisual : Node3D
 
     public void UpdateSelected(bool selected)
     {
+        if (_selected == selected) return;
+
         foreach (var mesh in Meshes)
         {
             mesh.MaterialOverlay = selected ? _outlineShader : null;
         }
+
+        _selected = selected;
     }
 }

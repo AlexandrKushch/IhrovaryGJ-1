@@ -13,14 +13,12 @@ public partial class AreaController : Area3D
         Connect(Area3D.SignalName.BodyExited, new Callable(this, nameof(OnBodyExited)));
         Connect(Area3D.SignalName.AreaEntered, new Callable(this, nameof(OnBodyEntered)));
         Connect(Area3D.SignalName.AreaExited, new Callable(this, nameof(OnBodyExited)));
-        GD.Print($"{Name} Connected");
     }
 
     public void OnBodyEntered(Node3D node)
     {
         if (node is PickableBase pickableBase)
         {
-            pickableBase.Visual.UpdateSelected(true);
             Bodies.Add(pickableBase);
         }
     }
@@ -29,7 +27,6 @@ public partial class AreaController : Area3D
     {
         if (node is PickableBase pickableBase)
         {
-            pickableBase.Visual.UpdateSelected(false);
             Bodies.Remove(pickableBase);
         }
     }

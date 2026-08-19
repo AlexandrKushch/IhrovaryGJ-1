@@ -80,15 +80,20 @@ public partial class Fork : Node3D
         if (_carriage != null) return;
         if (SelectItemArea.Bodies.Count == 0) return;
 
+        var closestItem = SelectItemArea.Bodies.MinBy(x => x.GlobalPosition.DistanceTo(MovablePart.GlobalPosition));
+        Vector3 collisionPoint = Vector3.Zero;
+
+        bool ableToPickUp = Mathf.IsEqualApprox(closestItem.GlobalPosition.X, MovablePart.GlobalPosition.X, 0.75f)
+            && Mathf.IsEqualApprox(closestItem.GlobalPosition.Z, MovablePart.GlobalPosition.Z, 0.75f)
+            && TryRayToGround(closestItem, Vector3.Down, out collisionPoint);
+
+        closestItem.Visual.UpdateSelected(ableToPickUp);
+
         var direction = Input.GetAxis("fork_down", "fork_up");
 
         if (direction <= 0) return;
 
-        var closestItem = SelectItemArea.Bodies.MinBy(x => x.GlobalPosition.DistanceTo(MovablePart.GlobalPosition));
-
-        if (Mathf.IsEqualApprox(closestItem.GlobalPosition.X, MovablePart.GlobalPosition.X, 0.5f)
-            && Mathf.IsEqualApprox(closestItem.GlobalPosition.Z, MovablePart.GlobalPosition.Z, 0.5f)
-            && TryRayToGround(closestItem, Vector3.Down, out var collisionPoint))
+        if (ableToPickUp)
         {
             JointHelper.Instance.Join(MovablePart, closestItem, closestItem.GlobalPosition.DistanceTo(collisionPoint));
             _carriage = closestItem;
